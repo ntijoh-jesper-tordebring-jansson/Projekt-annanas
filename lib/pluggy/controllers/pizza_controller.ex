@@ -15,7 +15,11 @@ defmodule Pluggy.PizzaController do
   end
 
   def admin(conn) do
-    send_resp(conn, 200, render("Pizzas/admin", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/admin", data: [], layout: true))
+  end
+
+  def menu(conn) do
+    send_resp(conn, 200, render("pizzas/menu", data: [], layout: true))
   end
 
   #render använder eex
