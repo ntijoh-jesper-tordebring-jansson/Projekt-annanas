@@ -3,6 +3,7 @@ defmodule Pluggy.Router do
   use Plug.Debugger
 
 
+  alias Pluggy.PizzaController
   alias Pluggy.FruitController
   alias Pluggy.UserController
 
@@ -26,6 +27,9 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
+
+  get("/", do: PizzaController.index(conn))
+  get("/admin", do: PizzaController.admin(conn))
   get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))

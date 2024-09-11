@@ -1,3 +1,175 @@
 body {
-	background-color: peachpuff;
+	background-color: white;
+	font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+	width: 100%;
 }
+
+/* 
+Specifik stil för Tony's Pizzerias layout 
+*/
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the wrapper takes up at least the full viewport height */
+}
+
+.content {
+    flex: 1; /* Allows this section to grow and push footer down */
+}
+
+/* Header med logotyp och kundkorg */
+.tonys-header {
+    display: flex;
+    align-items: center; /* Centrera båda elementen vertikalt */
+    justify-content: center; /* Centrera hela headerns innehåll horisontellt */
+    padding: 20px;
+    width: 100%; /* Se till att headern tar upp hela bredden av sidan */
+    box-sizing: border-box; /* Inkludera padding i total bredd */
+    position: relative; /* Behåll headerns position för absolut positionering av kundkorg */
+}
+
+/* Tom div för mellanrum till vänster om logotypen */
+.tonys-spacer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	z-index: -1;
+}
+
+/* Logotyp-stil */
+.tonys-logo {
+    width: 800px; /* Begränsa storleken på logotypen */
+    height: auto; /* Bevara proportioner */
+}
+
+/* Kundkorg-stil */
+.tonys-basket {
+    width: 120px; /* Storlek på kundvagnsikonen */
+    height: auto; /* Bevara proportioner */
+}
+
+.tonys-basket-link {
+    position: absolute;
+    right: 20px; /* Positionera korgen 20px från högerkanten */
+}
+
+footer.tonys-footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    position: relative; /* Justerad från fixed för att fungera bättre på fler sidor */
+	padding: 20px;
+	grid-area: fo;
+}
+
+
+/* 
+Specifik stil för Tony's Pizzerias index-sida 
+*/
+.tonys-index .tonys-hero {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.tonys-index .tonys-hero-text {
+    text-align: center;
+}
+
+.tonys-index .tonys-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tonys-index .tonys-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.tonys-index .tonys-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.tonys-index .tonys-menu-link {
+    text-decoration: none;
+    background-color: #ff4500;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.tonys-index .tonys-menu-link:hover {
+    background-color: #e03e00;
+}
+
+
+/* 
+Admin login 
+*/
+
+#login-container {
+	position: absolute; /* Fäster containern på en fast position */
+	top: 50%; /* Positionerar containern vertikalt i mitten */
+	left: 50%; /* Positionerar containern horisontellt i mitten */
+	transform: translate(-50%, -50%); /* Flyttar containern så att dess mittpunkt är vid 50%, 50% */
+	display: flex;
+	flex-direction: column; /* Gör så att formulären och länkarna placeras vertikalt */
+	align-items: center; /* Centrerar innehållet horisontellt inom containern */
+	padding: 20px;
+	background-color: #fff; /* Vit bakgrundsfärg för boxen */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Skugga för att ge djup */
+	border-radius: 10px; /* Rundade hörn */
+	width: 100%;
+	max-width: 400px; /* Maximal bredd på boxen */
+  }
+  
+  /* Stil för formulär och länkar */
+  #login-container form {
+	width: 100%; /* Gör formulären fullbredd inom boxen */
+	margin-bottom: 20px; /* Avstånd mellan formulären och länkarna */
+  }
+  
+  #login-container input[type="text"], #login-container input[type="password"] {
+	width: calc(100% - 22px); /* Gör att textinmatningsfälten fyller boxen minus padding och border */
+	padding: 10px;
+	margin-bottom: 10px; /* Avstånd mellan fälten */
+	border: 1px solid #ccc; /* Rand runt fälten */
+	border-radius: 5px; /* Rundade hörn på fälten */
+  }
+  
+  #login-container input[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: lightskyblue; /* Blå bakgrundsfärg för knappen */
+	color: white; /* Vit textfärg på knappen */
+	border: none; /* Ingen rand runt knappen */
+	border-radius: 5px; /* Rundade hörn på knappen */
+	font-size: 16px;
+	cursor: pointer; /* Visar en hand när man hovrar över knappen */
+	background-color: #ff4500;
+  }
+  
+  #login-container input[type="submit"]:hover {
+	background-color: #e03e00;  
+  }

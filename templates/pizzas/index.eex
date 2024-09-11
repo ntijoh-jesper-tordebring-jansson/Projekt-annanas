@@ -1,0 +1,11 @@
+<section class="tonys-index">
+    <div class="tonys-hero">
+        <h2 class="tonys-hero-text">Upplev v&aring;ra pizzor av h&ouml;gsta kvalitet</h2>
+    </div>
+
+    <div class="tonys-container">
+        <h1 class="tonys-title">V&auml;lkommen till Tony's Pizzeria!</h1>
+        <p class="tonys-description">Vi jobbar med h&ouml;gsta kvalit&eacute; f&ouml;r att g&ouml;ra riktigt bra pizzor med de b&auml;sta ingredienserna. V&aring;rt m&aring;l &auml;r att ge dig en of&ouml;rgl&ouml;mlig smakupplevelse varje g&aring;ng du bes&ouml;ker oss.</p>
+        <a href="/menu" class="tonys-menu-link">Best&auml;ll/Meny</a>
+    </div>
+</section>
