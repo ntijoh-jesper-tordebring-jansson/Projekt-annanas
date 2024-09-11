@@ -2,12 +2,9 @@ defmodule Pluggy.Router do
   use Plug.Router
   use Plug.Debugger
 
-
   alias Pluggy.PizzaController
   alias Pluggy.FruitController
   alias Pluggy.UserController
-
-
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
@@ -19,7 +16,8 @@ defmodule Pluggy.Router do
     signing_salt: "cookie store signing salt",
     key_length: 64,
     log: :debug,
-    secret_key_base: "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
+    secret_key_base:
+      "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
   )
 
   plug(:fetch_session)
@@ -27,13 +25,14 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
-
   get("/", do: PizzaController.index(conn))
   get("/admin", do: PizzaController.admin(conn))
   get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
+
+  get("/checkout", do: PizzaController.checkout(conn))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 

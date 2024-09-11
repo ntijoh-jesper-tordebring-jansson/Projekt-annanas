@@ -11,13 +11,20 @@
 			<a href="/" class="tonys-logo-link">
 				<img src="/img/tonys-pizza-logo.svg" alt="Tony's Pizza Logo" class="tonys-logo">
 			</a>
-			<a href="/checkout" class="tonys-basket-link">
-				<img src="/img/tonys-pizza-basket.svg" alt="Kundvagn" class="tonys-basket">
-			</a>
+			<div class="dropdown">
+    		<a href="/checkout" class="tonys-basket-link">
+    			<img src="/img/tonys-pizza-basket.svg" alt="Kundvagn" class="tonys-basket">
+           	</a>
+    		<div class="dropdown-content">
+                <a href="/checkout">Checkout</a>
+                <a href="/checkout">Link 2</a>
+               <a href="/checkout">Link 3</a>
+            </div>
+        </div>
 		</header>
 		<main class="content">
 			<%= template %>
-		</main>	
+		</main>
 		<footer class="tonys-footer">
 			<p>&copy; 2024 Tony's Pizzeria. Alla r&auml;ttigheter f&ouml;rbeh&aring;llna.</p>
 		</footer>

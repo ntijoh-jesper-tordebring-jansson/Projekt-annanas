@@ -10,6 +10,10 @@ defmodule Pluggy.PizzaController do
     send_resp(conn, 200, render("pizzas/index", data: [], layout: true))
   end
 
+  def checkout(conn) do
+    send_resp(conn, 200, render("pizzas/checkout", data: [], layout: true))
+  end
+
   def admin(conn) do
     send_resp(conn, 200, render("Pizzas/admin", data: [], layout: true))
   end
