@@ -61,24 +61,51 @@ Specifik stil för Tony's Pizzerias layout
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.checkout-dropdown {
     position: relative;
     display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    transform: translateY(50px);
+.checkout-dropdown-content {
+    border-radius: 10px;
+    transform: translateY(100px);
+    transform: translateX(-50px);
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 18vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    padding: 10px; /* To add some spacing inside the dropdown */
+}
+
+.checkout-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px; /* Adds spacing between items */
+}
+
+.checkout-dropdown-image {
+    width: 50px; /* Adjust the size of the image */
+    height: 50px;
+    object-fit: cover; /* Ensures the image fits well within the bounds */
+    margin-right: 10px;
+}
+
+.checkout-dropdown-name {
+    flex: 1; /* Takes the remaining space between image and price */
+    padding-left: 10px;
+}
+
+.checkout-trash-icon {
+    height: 2vw;
+    object-fit: cover;
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.checkout-dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -86,12 +113,12 @@ Specifik stil för Tony's Pizzerias layout
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.checkout-dropdown-content a:hover {
     background-color: #ddd;
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.checkout-dropdown:hover .checkout-dropdown-content {
     display: block;
 }
 
