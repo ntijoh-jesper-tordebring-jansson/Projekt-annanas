@@ -1,50 +1,41 @@
 defmodule Pluggy.PizzaController do
   require IEx
 
-  alias Pluggy.Fruit
+  alias Pluggy.Pizza
   # alias Pluggy.User
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
   def index(conn) do
-    send_resp(conn, 200, render("pizzas/index", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/index", []))
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/checkout", []))
   end
 
   def admin(conn) do
-    send_resp(conn, 200, render("pizzas/admin", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/admin",[]))
   end
 
   def menu(conn) do
     send_resp(conn, 200, render("pizzas/menu", data: [], layout: true))
   end
 
-  #render använder eex
-  def new(conn), do: send_resp(conn, 200, render("fruits/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
-
-  def create(conn, params) do
-    Fruit.create(params)
-    case params["file"] do
-      nil -> IO.puts("No file uploaded")  #do nothing
-        # move uploaded file from tmp-folder
-      _  -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
+  def orders(conn) do
+    if 0 == 0 do
+      send_resp(conn, 200, render("Pizzas/orders", data: [], layout: false))
+    else
+      redirect(conn, "/admin")
     end
-    redirect(conn, "/fruits")
   end
 
-  def update(conn, id, params) do
-    Fruit.update(id, params)
-    redirect(conn, "/fruits")
-  end
-
-  def destroy(conn, id) do
-    Fruit.delete(id)
-    redirect(conn, "/fruits")
+  def admin_login_check(conn, params) do
+    if Pizza.admin_validate(params) do
+      redirect(conn, "/admin/orders")
+    else
+      redirect(conn, "/admin")
+    end
   end
 
   defp redirect(conn, url) do

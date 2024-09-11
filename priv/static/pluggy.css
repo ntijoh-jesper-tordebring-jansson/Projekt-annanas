@@ -98,8 +98,13 @@ Specifik stil för Tony's Pizzerias layout
     flex: 1; /* Takes the remaining space between image and price */
     padding-left: 10px;
 }
-
+.checkout-trash {
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
 .checkout-trash-icon {
+    display: block;
     height: 2vw;
     object-fit: cover;
 }
