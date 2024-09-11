@@ -1,7 +1,6 @@
 <div id="login-container">
     <h2>Admin login</h2>
-    <form method="post" action="/login"> 
-        <input type="hidden" name="user-value" value="login">
+    <form method="post" action="/admin"> 
         <input type="text" name="username" placeholder="Användarnamn" required>
         <input type="password" name="password" placeholder="Lösenord" required>
         <input type="submit" value="Logga in">
