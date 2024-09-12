@@ -1,0 +1,27 @@
+<div class="menu-content">
+    <%= for item <- pizzas do %>
+        <div class="menu-pizza-block">
+            <div>
+                <img class="menu-pizza-img" src="<%= item.img_path %>">
+            </div>
+            <div class="menu-pizza-desc">
+                <h3 class="menu-pizza-name">
+                    <%= item.name %>
+                </h3>
+                <div class="menu-pizza-ingridients">
+                    <%= for ingredient <- item.containing_ingredients do %>
+                        <p class="menu-pizza-ingridient"><%= ingredient %></p>
+                    <% end %>
+                </div>
+                <div class="menu-buttons">
+                    <div>
+                        <button class="menu-edit-button">Anpassa</button>
+                    </div>
+                    <div>
+                        <button class="menu-buy-button">Köp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

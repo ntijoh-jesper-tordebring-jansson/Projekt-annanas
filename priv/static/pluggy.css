@@ -250,3 +250,96 @@ Admin login
 /*
     Menu page
 */
+
+.menu-content {
+    width: 56vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.7vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.menu-pizza-block {
+    width: 26vw;
+    margin-top: 2vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-content > .menu-pizza-block:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+.menu-pizza-img {
+    width: 10vw;
+    width: 10vw;
+    margin-left: 0.4vw;
+    margin-right: 2vw;
+}
+
+.menu-pizza-desc {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu-pizza-ingridients {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-pizza-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 1.1vw;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0.4vw;
+}
+
+.menu-pizza-ingridient {
+    font-family: "Roboto", sans-serif;
+    color: rgb(146, 145, 145);
+    font-size: 1vw;
+    font-weight: 100;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.14vw;
+    margin-bottom: 0.14vw;
+}
+
+.menu-buttons {
+    margin-top: 0.4vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-edit-button {
+    font-size: 1vw;
+    font-family: "Roboto", sans-serif;
+    margin-right: 0.7vw;
+    background-color: rgb(242, 242, 178);
+    border: none;
+    border-radius: 0.4vw;
+    padding-top: 0.2vw;
+    padding-bottom: 0.2vw;
+    padding-right: 0.9vw;
+    padding-left: 0.9vw;
+}
+
+.menu-buy-button {
+    font-size: 1vw;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(13, 184, 13);
+    border: none;
+    border-radius: 0.4vw;
+    padding-top: 0.2vw;
+    padding-bottom: 0.2vw;
+    padding-right: 0.9vw;
+    padding-left: 0.9vw;
+}
