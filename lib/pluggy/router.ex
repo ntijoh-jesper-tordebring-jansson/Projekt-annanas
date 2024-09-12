@@ -18,6 +18,7 @@ defmodule Pluggy.Router do
     log: :debug,
     secret_key_base:
       "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
+            # "M7K/Odlu5j46AZslaMS+Xm02LvTemMXnRcPmBVqnzM1rxKW7JFR9I5o8tw6dl8fYUJLT1ie/nBejkXNU1VwA6w=="
   )
 
   plug(:fetch_session)
@@ -35,8 +36,6 @@ defmodule Pluggy.Router do
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
   get("/checkout", do: PizzaController.checkout(conn))
-
-  post("/admin", do: PizzaController.admin_login_check(conn, conn.body_params))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 

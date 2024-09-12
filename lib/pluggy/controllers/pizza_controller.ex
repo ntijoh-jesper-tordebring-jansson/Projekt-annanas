@@ -18,32 +18,19 @@ defmodule Pluggy.PizzaController do
     send_resp(conn, 200, render("Pizzas/admin", data: [], layout: true))
   end
 
-  # render använder eex
-  def new(conn), do: send_resp(conn, 200, render("fruits/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
+  def menu(conn) do
+    send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all(), layout: true))
+  end
 
-  def create(conn, params) do
-    Fruit.create(params)
+  def orders(conn) do
+    # get user if logged in
+    IEx.pry()
+    session_user = conn.private.plug_session["user_id"]
 
-    case params["file"] do
-      # do nothing
-      nil -> IO.puts("No file uploaded")
-      # move uploaded file from tmp-folder
-      _ -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
+    case session_user do
+      nil -> redirect(conn, "/admin")
+      _ -> send_resp(conn, 200, render("Pizzas/orders", data: [], layout: false))
     end
-
-    redirect(conn, "/fruits")
-  end
-
-  def update(conn, id, params) do
-    Fruit.update(id, params)
-    redirect(conn, "/fruits")
-  end
-
-  def destroy(conn, id) do
-    Fruit.delete(id)
-    redirect(conn, "/fruits")
   end
 
   defp redirect(conn, url) do

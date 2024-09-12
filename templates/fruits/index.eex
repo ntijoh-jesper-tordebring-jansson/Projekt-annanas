@@ -27,5 +27,3 @@
   <% end %>
 </ul>
 <a href="/fruits/new">Add new fruit</a>
-
-

@@ -1,22 +1,20 @@
 defmodule Pluggy.Pizza do
-  @users %{
-    "Tony123!" => Bcrypt.hash_pwd_salt("secret_password")
-  }
+  defstruct(id: nil, name: "", img_path: "", containing_ingredients: "")
 
-  def admin_validate(params) do
-    username = params["username"]
-    password = params["password"]
+  alias Pluggy.Pizza
 
-    case @users[username] do
-      nil ->
-        false
+  def all do
+    Postgrex.query!(DB, "SELECT * FROM pizzas", []).rows
+    |> to_struct_list
+  end
 
-      stored_hash ->
-        if Bcrypt.verify_pass(password, stored_hash) do
-          true
-        else
-          false
-        end
-    end
+  def to_struct_list(rows) do
+    for [id, name, img_path, containing_ingredients] <- rows,
+        do: %Pizza{
+          id: id,
+          name: name,
+          img_path: img_path,
+          containing_ingredients: containing_ingredients
+        }
   end
 end
