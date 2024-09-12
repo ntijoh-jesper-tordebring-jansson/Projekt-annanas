@@ -19,7 +19,7 @@ defmodule Pluggy.PizzaController do
   end
 
   def menu(conn) do
-    send_resp(conn, 200, render("pizzas/menu", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all(), layout: true))
   end
 
   def orders(conn) do
