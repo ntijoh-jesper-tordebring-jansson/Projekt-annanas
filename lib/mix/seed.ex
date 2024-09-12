@@ -14,6 +14,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "DROP TABLE IF EXISTS pizzas", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS ingredients", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS orders", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "DROP TABLE IF EXISTS users", [], pool: DBConnection.ConnectionPool)
   end
 
   defp create_tables() do
@@ -21,6 +22,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "Create TABLE pizzas (id SERIAL, name VARCHAR(255) NOT NULL, img_path VARCHAR(255) NOT NULL, containing_ingredients JSONB NOT NULL)", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "Create TABLE ingredients (id SERIAL, name VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients VARCHAR(255) NOT NULL, removed_ingredients VARCHAR(255) NOT NULL, customer VARCHAR(255) NOT NULL, done BOOLEAN)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, hash_psw VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
   end
 # dvdv
   defp seed_data() do
@@ -50,6 +52,8 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Salami"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Chili"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Annanas"], pool: DBConnection.ConnectionPool)
+
+    Postgrex.query!(DB, "INSERT INTO users(username, hash_psw) VALUES($1, $2)", ["Tony", Bcrypt.hash_pwd_salt("tonys")], pool: DBConnection.ConnectionPool)
   end
 
 end
