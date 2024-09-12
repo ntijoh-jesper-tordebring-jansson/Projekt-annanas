@@ -6,13 +6,12 @@ defmodule Pluggy.PizzaController do
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
-
   def index(conn) do
-    send_resp(conn, 200, render("pizzas/index", []))
+    send_resp(conn, 200, render("pizzas/index", data: [], layout: true))
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", []))
+    send_resp(conn, 200, render("pizzas/checkout", data: [], layout: true))
   end
 
   def menu(conn) do

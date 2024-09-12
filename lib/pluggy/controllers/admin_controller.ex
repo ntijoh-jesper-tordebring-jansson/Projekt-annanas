@@ -12,12 +12,10 @@ defmodule Pluggy.AdminController do
   end
 
   def orders(conn) do
-    # get user if logged in
-    session_user = conn.private.plug_session["user_id"]
-
-    case session_user do
-      nil -> redirect(conn, "/admin")
-      _ -> send_resp(conn, 200, render("Pizzas/orders", order: Admin.all(), layout: false))
+    if conn.private.plug_session["user_id"] == nil do
+      redirect(conn, "/admin")
+    else
+      send_resp(conn, 200, render("Pizzas/orders", orders: Admin.all(), layout: false))
     end
   end
 

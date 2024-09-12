@@ -4,7 +4,6 @@
     <a href="/">Hantera Ingredienser</a>
 </nav>
 <section>
-    <%= if order != nil do %>
         <ul>
             <%= for order <- orders do %>
                 <a href="/admin/orders/done">
@@ -16,5 +15,4 @@
                 </a>
             <% end %>
         </ul>
-      <% end %>
 </section>
