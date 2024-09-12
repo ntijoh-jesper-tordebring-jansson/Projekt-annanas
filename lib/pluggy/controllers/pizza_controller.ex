@@ -6,6 +6,7 @@ defmodule Pluggy.PizzaController do
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
+
   def index(conn) do
     send_resp(conn, 200, render("pizzas/index", []))
   end
@@ -23,19 +24,14 @@ defmodule Pluggy.PizzaController do
   end
 
   def orders(conn) do
-    if 0 == 0 do
-      send_resp(conn, 200, render("Pizzas/orders", data: [], layout: false))
-    else
-      redirect(conn, "/admin")
-    end
-  end
+      # get user if logged in
+      IEx.pry()
+      session_user = conn.private.plug_session["user_id"]
 
-  def admin_login_check(conn, params) do
-    if Pizza.admin_validate(params) do
-      redirect(conn, "/admin/orders")
-    else
-      redirect(conn, "/admin")
-    end
+      case session_user do
+        nil -> redirect(conn, "/admin")
+        _ -> send_resp(conn, 200, render("Pizzas/orders", data: [], layout: false))
+      end
   end
 
   defp redirect(conn, url) do
