@@ -1,6 +1,14 @@
 <div class="menu-content">
+
+    <!--
+    Elixir function that loops thru all
+    the pizzas and prints it out as items.
+    -->
     <%= for item <- pizzas do %>
+
+        <!-- Each pizzas "item block" -->
         <div class="menu-pizza-block">
+<<<<<<< HEAD
             <div id="popupModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; padding:20px; border:1px solid #ccc; z-index:1000;">
               <form method="post" action="/menu">
                 <h3>Välj pizza</h3>
@@ -24,18 +32,30 @@
 
             <div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:999;"></div>
 
+=======
+
+            <!-- The pizza image of the block -->
+>>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
             <div>
                 <img class="menu-pizza-img" src="<%= item.img_path %>">
             </div>
+
+            <!-- The pizza description of the block -->
             <div class="menu-pizza-desc">
+
+                <!-- The pizza title of the block -->
                 <h3 class="menu-pizza-name">
                     <%= item.name %>
                 </h3>
+
+                <!-- The pizza ingridients of the block -->
                 <div class="menu-pizza-ingridients">
                     <%= for ingredient <- item.containing_ingredients do %>
                         <p class="menu-pizza-ingridient"><%= ingredient %></p>
                     <% end %>
                 </div>
+
+                <!-- Edit and Add to cart buttons the block -->
                 <div class="menu-buttons">
                     <a href="/menu/edit/<%= item.id %>">
                         <button class="menu-edit-button">Anpassa</button>
@@ -44,18 +64,30 @@
                         <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="showPopup()">Köp</button>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     <% end %>
+<<<<<<< HEAD
     <!-- <script>
       function addToLocalStorage(button) {
         const pizzaName = button.id;
         const imgPath = button.getAttribute('data-name');
         let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get existing cart or create an empty one
+=======
+    <script>
+        function addToLocalStorage(button) {
+            const pizzaName = button.id;
+            const imgPath = button.getAttribute('data-name');
+            let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get existing cart or create an empty one
+>>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
             cart.push({name: pizzaName, imgPath: imgPath}); // Add pizza to cart
             localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
 
             alert(pizzaName + " has been added to your cart!");
+<<<<<<< HEAD
       }
 
 
@@ -71,6 +103,8 @@
         function closePopup() {
           document.getElementById("popupModal").style.display = "none";
           document.getElementById("popupOverlay").style.display = "none";
+=======
+>>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
         }
     </script>
 </div>
