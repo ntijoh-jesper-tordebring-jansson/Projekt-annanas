@@ -50,6 +50,12 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Salami"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Chili"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Annanas"], pool: DBConnection.ConnectionPool)
+    
+    
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer) VALUES($1, $2, $3, $4)", ["Diavola", "cury", "degen", "Fiona"], pool: DBConnection.ConnectionPool)
+
+    Postgrex.query!(DB, "INSERT INTO users(username, hash_psw) VALUES($1, $2)", ["Tony", Bcrypt.hash_pwd_salt("tonys")], pool: DBConnection.ConnectionPool)
+
   end
 
 end

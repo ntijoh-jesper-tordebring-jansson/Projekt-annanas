@@ -1,0 +1,18 @@
+<nav>
+    <a href="/users/logout">Logga ut</a>
+    <a href="/admin/orders">Hantera pizzor</a>
+    <a href="/">Hantera Ingredienser</a>
+</nav>
+<section>
+        <ul>
+            <%= for order <- orders do %>
+                <a href="/admin/orders/done">
+                    <li><%= order.pizza_name %> <br>
+                    - <%= order.added_ingredients%> <br>
+                    - <%= order.removed_ingredients%> <br>
+                    to <%= order.customer %> 
+                    </li>
+                </a>
+            <% end %>
+        </ul>
+</section>

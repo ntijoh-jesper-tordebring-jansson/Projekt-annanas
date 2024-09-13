@@ -14,9 +14,9 @@
                     <% end %>
                 </div>
                 <div class="menu-buttons">
-                    <div>
+                    <a href="/menu/edit/<%= item.id %>">
                         <button class="menu-edit-button">Anpassa</button>
-                    </div>
+                    </a>
                     <div>
                         <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="addToLocalStorage(this)">Köp</button>
                     </div>

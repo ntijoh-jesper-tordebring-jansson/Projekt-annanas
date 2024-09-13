@@ -5,21 +5,18 @@ defmodule Pluggy.Router do
   alias Pluggy.PizzaController
   alias Pluggy.FruitController
   alias Pluggy.UserController
+  alias Pluggy.AdminController
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
 
   plug(Plug.Session,
-    store: :cookie,
-    key: "_pluggy_session",
-    encryption_salt: "cookie store encryption salt",
-    signing_salt: "cookie store signing salt",
-    key_length: 64,
-    log: :debug,
-    secret_key_base:
-      "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
-            # "M7K/Odlu5j46AZslaMS+Xm02LvTemMXnRcPmBVqnzM1rxKW7JFR9I5o8tw6dl8fYUJLT1ie/nBejkXNU1VwA6w=="
-  )
+  store: :cookie,
+  key: "_my_app_session",
+  encryption_salt: "cookie store encryption salt",
+  signing_salt: "cookie store signing salt",
+  log: :debug
+)
 
   plug(:fetch_session)
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
@@ -27,15 +24,18 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get("/", do: PizzaController.index(conn))
-  get("/admin", do: PizzaController.admin(conn))
-  get("/admin/orders", do: PizzaController.orders(conn))
+  get("/admin", do: AdminController.admin(conn))
+  get("/admin/orders", do: AdminController.orders(conn))
   get("/menu", do: PizzaController.menu(conn))
+  get("/menu/edit/:id", do: PizzaController.edit(conn, id))
   get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
   get("/checkout", do: PizzaController.checkout(conn))
+
+  post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 
@@ -55,7 +55,7 @@ defmodule Pluggy.Router do
   defp put_secret_key_base(conn, _) do
     put_in(
       conn.secret_key_base,
-      "-- LONG STRING WITH AT LEAST 64 BYTES LONG STRING WITH AT LEAST 64 BYTES --"
+      "M7K/Odlu5j46AZslaMS+Xm02LvTemMXnRcPmBVqnzM1rxKW7JFR9I5o8tw6dl8fYUJLT1ie/nBejkXNU1VwA6w=="
     )
   end
 end
