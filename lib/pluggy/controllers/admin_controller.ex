@@ -1,6 +1,6 @@
 defmodule Pluggy.AdminController do
 
-  require IEx
+  # require IEx
 
   alias Pluggy.Admin
   # alias Pluggy.User

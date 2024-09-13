@@ -1,18 +1,35 @@
 <div class="menu-content">
+
+    <!--
+    Elixir function that loops thru all
+    the pizzas and prints it out as items.
+    -->
     <%= for item <- pizzas do %>
+
+        <!-- Each pizzas "item block" -->
         <div class="menu-pizza-block">
+
+            <!-- The pizza image of the block -->
             <div>
                 <img class="menu-pizza-img" src="<%= item.img_path %>">
             </div>
+
+            <!-- The pizza description of the block -->
             <div class="menu-pizza-desc">
+
+                <!-- The pizza title of the block -->
                 <h3 class="menu-pizza-name">
                     <%= item.name %>
                 </h3>
+
+                <!-- The pizza ingridients of the block -->
                 <div class="menu-pizza-ingridients">
                     <%= for ingredient <- item.containing_ingredients do %>
                         <p class="menu-pizza-ingridient"><%= ingredient %></p>
                     <% end %>
                 </div>
+
+                <!-- Edit and Add to cart buttons the block -->
                 <div class="menu-buttons">
                     <div>
                         <button class="menu-edit-button">Anpassa</button>
@@ -21,7 +38,11 @@
                         <button class="menu-buy-button">Köp</button>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     <% end %>
+
 </div>
