@@ -6,6 +6,9 @@ defmodule Pluggy.PizzaController do
   import Plug.Conn, only: [send_resp: 3]
 
   def index(conn) do
+    if conn.cookies["cart"] == nil do
+      Map.put(conn.cookies, "cart", UUID.uuid4)
+    end
     send_resp(conn, 200, render("pizzas/index", data: []))
   end
 

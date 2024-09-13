@@ -34,9 +34,9 @@
                     <a href="/menu/edit/<%= item.id %>">
                         <button class="menu-edit-button">Anpassa</button>
                     </a>
-                    <div>
+                    <a href="/menu/add/<%= item.id %>">
                         <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="addToLocalStorage(this)">Köp</button>
-                    </div>
+                    </a>
                 </div>
 
             </div>
@@ -56,3 +56,6 @@
         }
     </script>
 </div>
+
+conn.cookies["cart"]
+Map.put(conn.cookies, "cart", UUID.uuid4)
