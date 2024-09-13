@@ -82,7 +82,7 @@ defmodule Mix.Tasks.Seed do
 
 
     # Temporary for dev
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, done) VALUES($1, $2, $3, $4, $5)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false, false, true], pool: DBConnection.ConnectionPool)
   end
 
 end

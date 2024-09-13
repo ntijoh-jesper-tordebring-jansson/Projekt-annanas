@@ -8,18 +8,18 @@
 
         <!-- Each pizzas "item block" -->
         <div class="menu-pizza-block">
-<<<<<<< HEAD
+
             <div id="popupModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; padding:20px; border:1px solid #ccc; z-index:1000;">
-              <form method="post" action="/menu">
+              <form method="post" action="/menu/add">
                 <h3>Välj pizza</h3>
                 <label>Normal pizza</label>
                 <input type="radio" name="size" placeholder="Normal pizza" value=true checked>
                 <label>Stor pizza</label>
-                <input type="radio" name="size" placeholder="Stor pizza" value=false checked>
+                <input type="radio" name="size" placeholder="Stor pizza" value=false >
 
                 <h3>Välj gluten</h3>
                 <label>Ja</label>
-                <input type="radio" name="gluten" value=true input>
+                <input type="radio" name="gluten" value=true checked>
                 <label>Nej</label>
                 <input type="radio" name="gluten" value=false input>
                 <h3></h3>
@@ -32,10 +32,6 @@
 
             <div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:999;"></div>
 
-=======
-
-            <!-- The pizza image of the block -->
->>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
             <div>
                 <img class="menu-pizza-img" src="<%= item.img_path %>">
             </div>
@@ -61,7 +57,9 @@
                         <button class="menu-edit-button">Anpassa</button>
                     </a>
                     <div>
-                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="showPopup()">Köp</button>
+                        <form method="post" action="/menu/add">
+                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="showPopup()" name="pizza_id" value="<%= item.id %>">Köp</button>
+                        </form>
                     </div>
                 </div>
 
@@ -70,24 +68,24 @@
         </div>
 
     <% end %>
-<<<<<<< HEAD
+
     <!-- <script>
       function addToLocalStorage(button) {
         const pizzaName = button.id;
         const imgPath = button.getAttribute('data-name');
         let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get existing cart or create an empty one
-=======
+
     <script>
         function addToLocalStorage(button) {
             const pizzaName = button.id;
             const imgPath = button.getAttribute('data-name');
             let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get existing cart or create an empty one
->>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
+
             cart.push({name: pizzaName, imgPath: imgPath}); // Add pizza to cart
             localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
 
             alert(pizzaName + " has been added to your cart!");
-<<<<<<< HEAD
+
       }
 
 
@@ -103,8 +101,6 @@
         function closePopup() {
           document.getElementById("popupModal").style.display = "none";
           document.getElementById("popupOverlay").style.display = "none";
-=======
->>>>>>> 1187644bd2a98f1f0653ddebc70f05e5cd987a0f
         }
     </script>
 </div>
