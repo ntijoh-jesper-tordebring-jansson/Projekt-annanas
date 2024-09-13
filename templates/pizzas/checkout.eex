@@ -1,1 +1,25 @@
-<h1>Checkout</h1>
+<div class="checkout-container">
+    <h1 class="checkout-title">Varukorg</h1>
+    
+    <div class="checkout-cart-box">
+        <div class="checkout-cart-items">
+            <!-- Här läggs varorna till i varukorgen -->
+            <div class="checkout-cart-item">
+                <p>Exempelvara 1 - 100 kr</p>
+                <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort">
+            </div>
+            <div class="checkout-cart-item">
+                <p>Exempelvara 2 - 200 kr</p>
+                <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort">
+            </div>
+            <!-- Lägg till fler varor här -->
+        </div>
+    </div>
+    
+    <div class="checkout-name-section">
+        <label for="checkout-name">Ditt namn:</label>
+        <input type="text" id="checkout-name" name="checkout-name" placeholder="Skriv ditt namn här">
+    </div>
+    
+    <button class="checkout-order-button">Beställ</button>
+</div>

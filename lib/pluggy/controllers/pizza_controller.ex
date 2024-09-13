@@ -6,19 +6,23 @@ defmodule Pluggy.PizzaController do
   import Plug.Conn, only: [send_resp: 3]
 
   def index(conn) do
-    send_resp(conn, 200, render("pizzas/index", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/index", data: []))
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", data: [], layout: true))
+    send_resp(conn, 200, render("pizzas/checkout", data: []))
   end
 
   ##
   def menu(conn) do
-    send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all(), layout: true))
+    send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all()))
   end
 
-  defp redirect(conn, url) do
-    Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  def edit(conn, id) do
+    send_resp(conn, 200, render("pizzas/edit", pizza: Pizza.get(id), ingredients: Pizza.ingredients))
   end
+
+  # defp redirect(conn, url) do
+  #   Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  # end
 end

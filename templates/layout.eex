@@ -17,18 +17,12 @@
 				<img src="/img/tonys-pizza-logo.svg" alt="Tony's Pizza Logo" class="tonys-logo">
             </a>
 			<div class="checkout-dropdown">
-    		<a href="/checkout" class="tonys-basket-link">
+    		<a  class="tonys-basket-link">
     			<img src="/img/tonys-pizza-basket.svg" alt="Kundvagn" class="tonys-basket">
            	</a>
     		<div class="checkout-dropdown-content">
-                <div class="checkout-dropdown-item">
-                    <img src="image.png" alt="item" class="checkout-dropdown-image">
-                    <span class="checkout-dropdown-name">name</span>
-                    <a class="checkout-trash">
-                        <img src="/img/trashcan.png" class="checkout-trash-icon">
-                    </a>
 
-                </div>
+
             </div>
         </div>
 		</header>
@@ -39,5 +33,95 @@
 			<p>&copy; 2024 Tony's Pizzeria. Alla rättigheter förbehållna.</p>
 		</footer>
 	</div>
+
+	<script>
+     	// Select the dropdown and basket link
+      const basketLink = document.querySelector('.tonys-basket-link');
+      const dropdownContent = document.querySelector('.checkout-dropdown-content');
+
+      // Toggle the dropdown visibility on click of the basket link
+      basketLink.addEventListener('click', function(event) {
+          event.stopPropagation(); // Prevent the click from bubbling up to the document
+          dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+          updateDropdown(); // Update dropdown with the latest items
+      });
+
+      // Prevent dropdown from closing when clicked directly
+      dropdownContent.addEventListener('click', function(event) {
+          event.stopPropagation(); // Prevent the click from bubbling up to the document
+      });
+
+      // Hide the dropdown when clicking outside of the basket or dropdown
+      document.addEventListener('click', function(event) {
+          if (!basketLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+              dropdownContent.style.display = 'none';
+          }
+      });
+
+
+
+
+
+      // Function to update the dropdown with pizza names from localStorage
+      function updateDropdown() {
+          const dropdownContent = document.querySelector('.checkout-dropdown-content');
+          dropdownContent.innerHTML = ''; // Clear the existing content
+
+          // Retrieve the cart from localStorage
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+          if (cart.length === 0) {
+              dropdownContent.innerHTML = '<p>Your cart is empty!</p>';
+              return;
+          }
+
+        const id = 0;
+          // Loop through the cart items and create dropdown items
+          cart.forEach((item) => {
+              const pizzaName = item.name;
+              const imgPath = item.imgPath;
+
+              const itemDiv = document.createElement('div');
+              itemDiv.classList.add('checkout-dropdown-item');
+
+              const img = document.createElement('img');
+              img.src = imgPath;  // Placeholder image, replace with actual image path if available
+              img.alt = 'item';
+              img.classList.add('checkout-dropdown-image');
+
+              const nameSpan = document.createElement('span');
+              nameSpan.classList.add('checkout-dropdown-name');
+              nameSpan.textContent = pizzaName;
+
+              const trashLink = document.createElement('a');
+              trashLink.classList.add('checkout-trash');
+              trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
+
+              // Append image, name, and trash icon to the item div
+              itemDiv.appendChild(img);
+              itemDiv.appendChild(nameSpan);
+              itemDiv.appendChild(trashLink);
+
+              // Append the item div to the dropdown content
+              dropdownContent.appendChild(itemDiv);
+          });
+
+          // Create and append delete button
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Clear Cart';
+          deleteButton.addEventListener('click', function() {
+              localStorage.removeItem('cart'); // Clear the cart from localStorage
+              updateDropdown(); // Refresh the dropdown after clearing
+          });
+
+          dropdownContent.appendChild(deleteButton);
+      }
+
+      // Call this function when the page loads
+      document.addEventListener('DOMContentLoaded', updateDropdown);
+
+
+
+	</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 
     <div class="tonys-container">
         <h1 class="tonys-title">Välkommen till Tony's Pizzeria!</h1>
-        <p class="tonys-description">Vi jobbar med högsta kvalit&eacute; för att göra riktigt bra pizzor med de bästa ingredienserna. Vårt mål är att ge dig en oförglömlig smakupplevelse varje gång du besöker oss.</p>
+        <p class="tonys-description">Vi jobbar med högsta kvalité; för att göra riktigt bra pizzor med de bästa ingredienserna. Vårt mål är att ge dig en oförglömlig smakupplevelse varje gång du besöker oss.</p>
         <a href="/menu" class="tonys-menu-link">Beställ/Meny</a>
     </div>
 </section>

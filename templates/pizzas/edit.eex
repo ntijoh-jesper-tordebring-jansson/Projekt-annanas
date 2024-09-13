@@ -1,0 +1,23 @@
+<div class="pizza-edit-container">
+  <h1>Redigera ingredienser för <%= pizza.name %></h1>
+
+  <form action="/menu/edit/<%= pizza.id %>/update" method="post">
+    <h3>Välj ingredienser:</h3>
+    <div class="ingredient-list">
+      <%= for ingredient <- ingredients do %>
+        <div class="ingredient-checkbox">
+          <label>
+            <input type="checkbox" name="ingredients[]" value="<%= ingredient.name %>" 
+              <%= if ingredient.name in pizza.containing_ingredients, do: "checked" %> >
+            <%= ingredient.name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+
+    <button type="submit">Spara ändringar</button>
+    <a href="/menu" class="edit-back-to-menu">Tillbaka till menyn (sparar ej ändringar)</a>
+  </form>
+</div>

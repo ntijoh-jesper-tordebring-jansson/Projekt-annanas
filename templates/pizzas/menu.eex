@@ -31,11 +31,11 @@
 
                 <!-- Edit and Add to cart buttons the block -->
                 <div class="menu-buttons">
-                    <div>
+                    <a href="/menu/edit/<%= item.id %>">
                         <button class="menu-edit-button">Anpassa</button>
-                    </div>
+                    </a>
                     <div>
-                        <button class="menu-buy-button">Köp</button>
+                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button" onclick="addToLocalStorage(this)">Köp</button>
                     </div>
                 </div>
 
@@ -44,5 +44,15 @@
         </div>
 
     <% end %>
+    <script>
+        function addToLocalStorage(button) {
+            const pizzaName = button.id;
+            const imgPath = button.getAttribute('data-name');
+            let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get existing cart or create an empty one
+            cart.push({name: pizzaName, imgPath: imgPath}); // Add pizza to cart
+            localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
 
+            alert(pizzaName + " has been added to your cart!");
+        }
+    </script>
 </div>

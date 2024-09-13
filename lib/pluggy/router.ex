@@ -32,6 +32,9 @@ defmodule Pluggy.Router do
   # Menu page
   get("/menu", do: PizzaController.menu(conn))
 
+  # Menu - edit page
+  get("/menu/edit/:id", do: PizzaController.edit(conn, id))
+
   # Checkout cart page
   get("/checkout", do: PizzaController.checkout(conn))
 
@@ -51,6 +54,8 @@ defmodule Pluggy.Router do
   # Admin - logout
   post("/users/logout", do: UserController.logout(conn))
 
+  # Edit pizza commit
+  post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
 
 
 
