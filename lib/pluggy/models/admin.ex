@@ -9,6 +9,12 @@ defmodule Pluggy.Admin do
   end
 
   def to_struct_list(rows) do
-    for [id, pizza_name, added_ingredients, remowed_ingredients, customer] <- rows, do: %Admin{id: id, pizza_name: pizza_name, added_ingredients: added_ingredients, removed_ingredients: remowed_ingredients, customer: customer}
+    for [id, pizza_name, added_ingredients, remowed_ingredients, customer] <- rows,
+    do: %Admin{
+      id: id,
+      pizza_name: pizza_name,
+      added_ingredients: added_ingredients,
+      removed_ingredients: remowed_ingredients,
+      customer: customer}
   end
 end
