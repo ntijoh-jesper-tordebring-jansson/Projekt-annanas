@@ -27,12 +27,15 @@ defmodule Pluggy.Router do
   get("/admin", do: AdminController.admin(conn))
   get("/admin/orders", do: AdminController.orders(conn))
   get("/menu", do: PizzaController.menu(conn))
+  get("/menu/edit/:id", do: PizzaController.edit(conn, id))
   get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
   get("/checkout", do: PizzaController.checkout(conn))
+
+  post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 

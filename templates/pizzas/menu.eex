@@ -14,9 +14,9 @@
                     <% end %>
                 </div>
                 <div class="menu-buttons">
-                    <div>
+                    <a href="/menu/edit/<%= item.id %>">
                         <button class="menu-edit-button">Anpassa</button>
-                    </div>
+                    </a>
                     <div>
                         <button class="menu-buy-button">Köp</button>
                     </div>

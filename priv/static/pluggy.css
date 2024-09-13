@@ -343,3 +343,67 @@ Admin login
     padding-right: 0.9vw;
     padding-left: 0.9vw;
 }
+
+/* 
+Design för edit pizza sidan 
+*/
+
+.pizza-edit-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .pizza-edit-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .ingredient-list {
+    max-height: 300px; /* Justera höjden som passar din design */
+    overflow-y: auto;  /* Lägg till scrollbar om innehållet är för långt */
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Valfri kantlinje */
+    padding: 10px;      /* Valfritt inre avstånd */
+    background-color: #f9f9f9; /* Valfri bakgrundsfärg */
+  }
+  
+  .ingredient-list div {
+    margin-bottom: 10px;
+  }
+  
+  .ingredient-list label {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .pizza-edit-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .pizza-edit-container button,
+  .pizza-edit-container a.edit-back-to-menu {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px; /* Valfritt för rundade hörn */
+    font-size: 16px; /* Justera storlek för överensstämmelse */
+  }
+  
+  .pizza-edit-container button:hover,
+  .pizza-edit-container a.edit-back-to-menu:hover {
+    background-color: #218838;
+  }
+  
+  .pizza-edit-container a.edit-back-to-menu {
+    margin-left: 10px; /* Justera avståndet mellan knappen och länken */
+  }  
