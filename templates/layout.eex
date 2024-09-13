@@ -33,7 +33,7 @@
 			<p>&copy; 2024 Tony's Pizzeria. Alla rättigheter förbehållna.</p>
 		</footer>
 	</div>
-
+<!--
 	<script>
      	// Select the dropdown and basket link
       const basketLink = document.querySelector('.tonys-basket-link');
@@ -75,11 +75,12 @@
               return;
           }
 
-        const id = 0;
+
           // Loop through the cart items and create dropdown items
-          cart.forEach((item) => {
+          cart.forEach((item, index) => {
               const pizzaName = item.name;
               const imgPath = item.imgPath;
+
 
               const itemDiv = document.createElement('div');
               itemDiv.classList.add('checkout-dropdown-item');
@@ -94,6 +95,13 @@
               nameSpan.textContent = pizzaName;
 
               const trashLink = document.createElement('a');
+              trashLink.addEventListener('click', function() {
+                  const itemId = parseInt(this.id, 10);
+                  cart.splice(itemId, 1);
+                  localStorage.setItem('cart', JSON.stringify(cart));
+                  updateDropdown(); // Refresh the dropdown after clearing
+              });
+              trashLink.id = index;
               trashLink.classList.add('checkout-trash');
               trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
 
@@ -114,7 +122,18 @@
               updateDropdown(); // Refresh the dropdown after clearing
           });
 
+          const checkoutButton = document.createElement('a');
+          checkoutButton.textContent = 'Checkout';
+          checkoutButton.classList.add('menu-buy-button');
+          checkoutButton.href = '/checkout';
+
+          const totalPrice = document.createElement('p');
+          totalPrice.textContent = '$' + cart.length * 10;
+
+          dropdownContent.appendChild(totalPrice);
           dropdownContent.appendChild(deleteButton);
+          dropdownContent.appendChild(checkoutButton);
+
       }
 
       // Call this function when the page loads
@@ -122,6 +141,6 @@
 
 
 
-	</script>
+	</script> -->
 </body>
 </html>
