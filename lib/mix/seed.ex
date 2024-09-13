@@ -20,9 +20,11 @@ defmodule Mix.Tasks.Seed do
 
     ## Drop table orders ##
     Postgrex.query!(DB, "DROP TABLE IF EXISTS orders", [], pool: DBConnection.ConnectionPool)
-
+    ## drop table carts ##
+    Postgrex.query!(DB, "DROP TABLE IF EXISTS carts", [], pool: DBConnection.ConnectionPool)
     ## Drop table users ##
     Postgrex.query!(DB, "DROP TABLE IF EXISTS users", [], pool: DBConnection.ConnectionPool)
+
   end
 
   defp create_tables() do
@@ -33,12 +35,14 @@ defmodule Mix.Tasks.Seed do
 
     ## Create table ingredients ##
     Postgrex.query!(DB, "Create TABLE ingredients (id SERIAL, name VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
-
     ## Create table orders ##
-    Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, done BOOLEAN)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, is_done BOOLEAN, size BOOLEAN NOT NULL, gluten BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
+    ## Create table carts ##
+    Postgrex.query!(DB, "Create TABLE carts (id SERIAL, uuid VARCHAR(255) NOT NULL, pizza_id VARCHAR(255) NOT NULL, add_ingredients JSONB NOT NULL, remove_ingredients JSONB NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table users ##
     Postgrex.query!(DB, "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, hashed_password VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
+
   end
 
   defp seed_data() do
@@ -78,7 +82,7 @@ defmodule Mix.Tasks.Seed do
 
 
     # Temporary for dev
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, done) VALUES($1, $2, $3, $4, $5)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false, false, true], pool: DBConnection.ConnectionPool)
   end
 
 end

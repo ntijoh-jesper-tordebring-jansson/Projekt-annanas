@@ -5,24 +5,23 @@ defmodule Pluggy.Router do
   alias Pluggy.PizzaController
   alias Pluggy.UserController
   alias Pluggy.AdminController
+  alias Pluggy.CartController
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
 
   plug(Plug.Session,
-  store: :cookie,
-  key: "_my_app_session",
-  encryption_salt: "cookie store encryption salt",
-  signing_salt: "cookie store signing salt",
-  log: :debug
-)
+    store: :cookie,
+    key: "_my_app_session",
+    encryption_salt: "cookie store encryption salt",
+    signing_salt: "cookie store signing salt",
+    log: :debug
+  )
 
   plug(:fetch_session)
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
   plug(:match)
   plug(:dispatch)
-
-
 
   ## GET-requests ##
 
@@ -47,8 +46,6 @@ defmodule Pluggy.Router do
   #Adds pizza to cart
   get("/menu/add/:id", do: CartController.add(conn, id))
 
-
-
   ## POST-requests ##
 
   # Admin - login
@@ -60,7 +57,7 @@ defmodule Pluggy.Router do
   # Edit pizza commit
   post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
 
-
+  post("/menu/add", do: CartController.add(conn, conn.body_params))
 
   match _ do
     send_resp(conn, 404, "oops")
