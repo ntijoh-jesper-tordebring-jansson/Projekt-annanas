@@ -407,3 +407,87 @@ Design för edit pizza sidan
   .pizza-edit-container a.edit-back-to-menu {
     margin-left: 10px; /* Justera avståndet mellan knappen och länken */
   }  
+
+  /* 
+  Design på varukorgens sida
+   */
+
+.checkout-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.checkout-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.checkout-cart-box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    max-height: 400px; /* Justera storleken på varukorgsboxen */
+    overflow-y: auto;
+    background-color: #fafafa;
+}
+
+.checkout-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-cart-item p {
+    margin: 0;
+}
+
+.checkout-trash-icon {
+    width: 24px; /* Justera storleken på ikonen om det behövs */
+    height: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.checkout-trash-icon:hover {
+    opacity: 0.7;
+}
+
+.checkout-name-section {
+    margin-bottom: 20px;
+}
+
+.checkout-name-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkout-name-section input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkout-order-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.checkout-order-button:hover {
+    background-color: #218838;
+}
