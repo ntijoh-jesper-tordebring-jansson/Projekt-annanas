@@ -123,9 +123,9 @@ Specifik stil för Tony's Pizzerias layout
 }
 
 /* Show the dropdown menu on hover */
-.checkout-dropdown:hover .checkout-dropdown-content {
+/* .checkout-dropdown:hover .checkout-dropdown-content {
     display: block;
-}
+} */
 
 footer.tonys-footer {
     text-align: center;
