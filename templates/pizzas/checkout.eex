@@ -5,11 +5,16 @@
         <div class="checkout-cart-items">
           <%= for cart <- carts do %>
             <%= for item <- pizzas do %>
-              <%= if cart.pizza_id == Integer.to_string(item.id) do %>
-                <div class="checkout-cart-item">
+              <%= if cart.pizza_name == item.name do %>
+                <div class="checkout-cart-item" id="<%= cart.id %>">
                   <img src="<%= item.img_path %>" alt="item" class="checkout-dropdown-image">
-                  <p><%= iatem.name %> <%= if cart.add_ingredients != "" || cart.remove_ingredients != "" do %>(Ändrad) <% end %></p>
-                  <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort" onclick="removeItem('<%= item.id %>')">
+                  <p><%= item.name %> <%= if cart.add_ingredients != "" || cart.remove_ingredients != "" do %>(Ändrad) <% end %></p>
+                  <form action="/checkout/remove" method="post" style="display: inline;">
+                      <input type="hidden" name="id" value="<%= cart.id %>">
+                      <button type="submit" >
+                        <img src="/img/trashcan.png" alt="Ta bort" class="checkout-trash-icon">
+                      </button>
+                    </form>
                 </div>
               <% end %>
             <% end %>
@@ -18,77 +23,91 @@
 
     </div>
 
+    <form action="/checkout/done" method="post" onsubmit="return validateForm();">
     <div class="checkout-name-section">
         <label for="checkout-name">Ditt namn:</label>
-        <input type="text" id="checkout-name" name="checkout-name" placeholder="Skriv ditt namn här">
+        <input type="text" id="checkout-name" name="checkout_name" placeholder="Skriv ditt namn här" required>
     </div>
-
-    <button class="checkout-order-button">Beställ</button>
-
-
+        <input type="submit" value="Beställ" id="submit-button" class="checkout-order-button" disabled>
+    </form>
 
 
 
-    <!-- <script>
-        function updateBasket() {
-            const basketContent = document.querySelector('.checkout-cart-items');
-            basketContent.innerHTML = ''; // Clear the existing content
 
-            // Retrieve the cart from localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            if (cart.length === 0) {
-                basketContent.innerHTML = '<p>Your cart is empty!</p>';
-                return;
-            }
-
-            // Loop through the cart items and create dropdown items
-            cart.forEach((item, index) => {
-                const pizzaName = item.name;
-                const imgPath = item.imgPath;
-
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('checkout-cart-item');
-
-                const img = document.createElement('img');
-                img.src = imgPath;
-                img.alt = 'item';
-                img.classList.add('checkout-dropdown-image');
-
-                const nameSpan = document.createElement('p');
-                nameSpan.textContent = pizzaName;
-
-                const trashLink = document.createElement('a');
-                trashLink.addEventListener('click', function() {
-                    const itemId = parseInt(this.id, 10);
-                    cart.splice(itemId, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    location.reload()
-                });
-                trashLink.id = index;
-                trashLink.classList.add('checkout-trash');
-                trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
-
-                // Append image, name, and trash icon to the item div
-                itemDiv.appendChild(img);
-                itemDiv.appendChild(nameSpan);
-                itemDiv.appendChild(trashLink);
-
-                // Append the item div to the dropdown content
-                basketContent.appendChild(itemDiv);
-            });
-
-            const totalPrice = document.createElement('p');
-            totalPrice.textContent = 'Total Price: $' + cart.length * 10;
-
-            basketContent.appendChild(totalPrice);
-        }
-
-        // Call this function when the page loads
-        document.addEventListener('DOMContentLoaded', updateBasket);
-    </script> -->
 
     <script>
+// <!--
+//         function updateBasket() {
+//             const basketContent = document.querySelector('.checkout-cart-items');
+//             basketContent.innerHTML = ''; // Clear the existing content
+
+//             // Retrieve the cart from localStorage
+//             let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+//             if (cart.length === 0) {
+//                 basketContent.innerHTML = '<p>Your cart is empty!</p>';
+//                 return;
+//             }
+
+//             // Loop through the cart items and create dropdown items
+//             cart.forEach((item, index) => {
+//                 const pizzaName = item.name;
+//                 const imgPath = item.imgPath;
+
+//                 const itemDiv = document.createElement('div');
+//                 itemDiv.classList.add('checkout-cart-item');
+
+//                 const img = document.createElement('img');
+//                 img.src = imgPath;
+//                 img.alt = 'item';
+//                 img.classList.add('checkout-dropdown-image');
+
+//                 const nameSpan = document.createElement('p');
+//                 nameSpan.textContent = pizzaName;
+
+//                 const trashLink = document.createElement('a');
+//                 trashLink.addEventListener('click', function() {
+//                     const itemId = parseInt(this.id, 10);
+//                     cart.splice(itemId, 1);
+//                     localStorage.setItem('cart', JSON.stringify(cart));
+//                     location.reload()
+//                 });
+//                 trashLink.id = index;
+//                 trashLink.classList.add('checkout-trash');
+//                 trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
+
+//                 // Append image, name, and trash icon to the item div
+//                 itemDiv.appendChild(img);
+//                 itemDiv.appendChild(nameSpan);
+//                 itemDiv.appendChild(trashLink);
+
+//                 // Append the item div to the dropdown content
+//                 basketContent.appendChild(itemDiv);
+//             });
+
+//             const totalPrice = document.createElement('p');
+//             totalPrice.textContent = 'Total Price: $' + cart.length * 10;
+
+//             basketContent.appendChild(totalPrice);
+//         }
+
+//         // Call this function when the page loads
+//         document.addEventListener('DOMContentLoaded', updateBasket); -->
+
+
+    document.getElementById("checkout-name").addEventListener("input", function () {
+        var nameField = document.getElementById("checkout-name");
+        var submitButton = document.getElementById("submit-button");
+
+        // Enable the button if the name field is not empty
+        if (nameField.value.trim() !== "") {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    });
+
+
 
     </script>
 

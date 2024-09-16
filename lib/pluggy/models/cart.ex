@@ -2,9 +2,9 @@ defmodule Pluggy.Cart do
   defstruct(
     id: nil,
     uuid: "",
-    pizza_id: "",
-    add_ingridients: "",
-    remove_ingridients: "",
+    pizza_name: "",
+    add_ingredients: "",
+    remove_ingredients: "",
     size: "",
     gluten: ""
   )
@@ -14,7 +14,7 @@ defmodule Pluggy.Cart do
   def add_to_cart(id) do
     Postgrex.query!(
       DB,
-      "INSERT INTO cart (uuid, pizza_id, gluten, size) VALUES($1, $2,$3, $4,)",
+      "INSERT INTO cart (uuid, pizza_name, gluten, size) VALUES($1, $2,$3, $4,)",
       id
     )
   end
@@ -25,13 +25,13 @@ defmodule Pluggy.Cart do
   end
 
   def to_struct_list(rows) do
-    for [id, uuid, pizza_id, add_ingridients, remove_ingridients, size, gluten] <- rows,
+    for [id, uuid, pizza_name, add_ingredients, remove_ingredients, size, gluten] <- rows,
         do: %Cart{
           id: id,
           uuid: uuid,
-          pizza_id: pizza_id,
-          add_ingridients: add_ingridients,
-          remove_ingridients: remove_ingridients,
+          pizza_name: pizza_name,
+          add_ingredients: add_ingredients,
+          remove_ingredients: remove_ingredients,
           size: size,
           gluten: gluten
         }
