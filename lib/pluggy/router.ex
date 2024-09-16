@@ -58,7 +58,7 @@ defmodule Pluggy.Router do
   post("/users/logout", do: UserController.logout(conn))
 
   # Edit pizza commit
-  post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
+  post("/menu/edit/:id", do: CartController.add_edit(conn, id, conn.body_params))
 
   post("/menu/add", do: CartController.add(conn, conn.body_params))
 

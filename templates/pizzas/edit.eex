@@ -1,13 +1,13 @@
 <div class="pizza-edit-container">
   <h1>Redigera ingredienser för <%= pizza.name %></h1>
 
-  <form action="/menu/edit/<%= pizza.id %>/update" method="post">
+  <form action="/menu/edit/<%= pizza.id %>" method="post">
     <h3>Välj ingredienser:</h3>
     <div class="ingredient-list">
       <%= for ingredient <- ingredients do %>
         <div class="ingredient-checkbox">
           <label>
-            <input type="checkbox" name="ingredients[]" value="<%= ingredient.name %>" 
+            <input type="checkbox" name="ingredients[]" value="<%= ingredient.name %>"
               <%= if ingredient.name in pizza.containing_ingredients, do: "checked" %> >
             <%= ingredient.name %>
           </label>
@@ -15,9 +15,29 @@
       <% end %>
     </div>
 
+    <!-- Lägg till en checkbox för gluten -->
+    <div class="gluten-checkbox">
+      <h3>Vill du ha glutenfri botten?</h3>
+
+        <input type="checkbox" name="gluten" value = "glutenfri">
+        Ja, använd glutenfri botten
+
+    </div>
+
+    <!-- Välj pizza storlek -->
+    <div class="pizza-size">
+      <h3>Välj pizzastorlek:</h3>
+      <label>
+        <input type="radio" name="pizza_size" value="vanlig" checked> Vanlig Pizza
+      </label>
+      <label>
+        <input type="radio" name="pizza_size" value="familj"> Familjepizza
+      </label>
+    </div>
+
     <br>
 
-    <button type="submit">Spara ändringar</button>
+    <button type="submit">Lägg till i varukorgen</button>
     <a href="/menu" class="edit-back-to-menu">Tillbaka till menyn (sparar ej ändringar)</a>
   </form>
 </div>

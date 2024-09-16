@@ -1,5 +1,8 @@
 defmodule Pluggy.CartController do
   alias Pluggy.Pizza
+
+  require IEx
+
   alias Pluggy.Cart
   import Pluggy.Template, only: [render: 3, render: 2]
   import Plug.Conn, only: [send_resp: 3]
@@ -29,6 +32,12 @@ defmodule Pluggy.CartController do
       ]
     )
 
+    Cart.add_cart(conn, params)
+    redirect(conn, "/menu")
+  end
+
+  def add_edit(conn, id, params) do
+    Cart.add_edit_cart(conn, id, params)
     redirect(conn, "/menu")
   end
 
