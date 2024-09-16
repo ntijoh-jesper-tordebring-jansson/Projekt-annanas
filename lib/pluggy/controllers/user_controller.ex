@@ -8,33 +8,52 @@ defmodule Pluggy.UserController do
     username = params["username"]
     password = params["password"]
 
+    # Get the hashed password of the current user from the database
+    result = Postgrex.query!(DB, "SELECT id, hashed_password FROM users WHERE username = $1", [username])
 
-    result =
-      Postgrex.query!(DB, "SELECT id, hash_psw FROM users WHERE username = $1", [username],
-        pool: DBConnection.ConnectionPool
-      )
-
+    # Process the login
     case result.num_rows do
-      # no user with that username
-      0 ->
-        redirect(conn, "/admin")
-      # user with that username exists
-      _ ->
-        [[id, hash_psw]] = result.rows
 
-        # Check if password is correct
-        if Bcrypt.verify_pass(password, hash_psw) do
+      # If theres no user with this username in database
+      0 ->
+
+        # Redirect back to admin login page
+        redirect(conn, "/admin")
+
+      # If a user with this username is in database
+      _ ->
+
+        # Define id and hashed_password from the database
+        [[id, hashed_password]] = result.rows
+
+        # Check if the entered password is correct by matching it with the encrypted password in database
+        if Bcrypt.verify_pass(password, hashed_password) do
+
+          # Give back a session id if password is correct
           Plug.Conn.put_session(conn, :user_id, id)
-          |> redirect("/admin/orders") #skicka vidare modifierad conn
+
+          # Send user to the orders page with the updated conn value
+          |> redirect("/admin/orders")
+
         else
+
+          # If the password is incorrect, redirect back to login page
           redirect(conn, "/admin")
+
         end
+
     end
+
   end
 
+  ## Log out from the admin page ##
   def logout(conn) do
-    Plug.Conn.configure_session(conn, drop: true) #tömmer sessionen
-    |> redirect("/fruits")
+
+    # Empty the session
+    Plug.Conn.configure_session(conn, drop: true)
+
+    # Redirect back to the login page
+    |> redirect("/admin")
   end
 
   defp redirect(conn, url),

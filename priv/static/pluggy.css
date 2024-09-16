@@ -7,6 +7,31 @@ body {
     width: 100%;
 }
 
+p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+h2 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+h3 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
 /*
 Specifik stil för Tony's Pizzerias layout
 */
@@ -491,4 +516,121 @@ Design för edit pizza sidan
 
 .checkout-order-button:hover {
     background-color: #218838;
+}
+
+/*
+    Admin orders page
+*/
+
+.orders-menu-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 85%;
+    border-right: 0.07vw solid black;
+}
+
+.orders-item-title-container {
+    text-align: center;
+}
+
+.orders-item-title {
+    font-size: 2.177vw;
+}
+
+.orders-admin-text {
+    margin: 0;
+    margin-top: 2.18vw;
+    font-size: 1.9vw;
+}
+
+.orders-link-to-pages-container {
+    text-align: center;
+    margin-top: 4.08vw;
+}
+
+.orders-link-to-pages {
+    font-size: 1.5vw;
+    color: black;
+}
+
+.orders-all-orders {
+    margin-top: 2%;
+    margin-left: 22%;
+    width: 70%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.36vw;
+}
+
+.orders-order-item {
+    border: 0.07vw solid black;
+    background-color: rgb(244, 242, 242);
+    width: 20.4vw;
+    padding: 1.36vw;
+}
+
+.orders-item-title {
+    text-align: center;
+    border-bottom: 0.07vw solid black;
+    padding-bottom: 0.68vw;
+}
+
+.orders-item-added {
+    border-bottom: 0.07vw solid black;
+    padding-bottom: 0.68vw;
+}
+
+.orders-item-added-plus {
+    font-size: 2.18vw;
+}
+
+.orders-item-added-text {
+    font-size: 1.224vw;
+    margin-left: 1.36vw;
+}
+
+.orders-item-removed {
+    border-bottom: 0.07vw solid black;
+    padding-bottom: 0.68vw;
+}
+
+.orders-item-removed-minus {
+    font-size: 2.18vw;
+}
+
+.orders-item-removed-text {
+    font-size: 1.224vw;
+    margin-left: 1.36vw;   
+}
+
+.orders-item-more-info-container {
+    border-bottom: 0.07vw solid black;
+    padding-bottom: 0.68vw;
+    padding-top: 0.68vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.orders-item-more-info {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.224vw;
+}
+
+.orders-item-more-info-line {
+    border-right: 0.07vw solid black;
+}
+
+.orders-item-orderer {
+    text-align: center;
+    border-bottom: 0.07vw solid black;
+    padding-top: 0.68vw;
+    padding-bottom: 0.68vw;
+}
+
+.orders-item-orderer-text {
+    font-size: 1.224vw;
 }

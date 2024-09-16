@@ -8,9 +8,6 @@
 
         <!-- Each pizzas "item block" -->
         <div class="menu-pizza-block">
-
-            <div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:999;"></div>
-
             <div>
                 <img class="menu-pizza-img" src="<%= item.img_path %>">
             </div>

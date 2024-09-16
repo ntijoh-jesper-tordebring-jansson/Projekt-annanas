@@ -1,18 +1,55 @@
-<nav>
-    <a href="/users/logout">Logga ut</a>
-    <a href="/admin/orders">Hantera pizzor</a>
-    <a href="/">Hantera Ingredienser</a>
-</nav>
-<section>
-        <ul>
-            <%= for order <- orders do %>
-                <a href="/admin/orders/done">
-                    <li><%= order.pizza_name %> <br>
-                    - <%= order.added_ingredients%> <br>
-                    - <%= order.removed_ingredients%> <br>
-                    to <%= order.customer %> 
-                    </li>
-                </a>
-            <% end %>
-        </ul>
-</section>
+<div class="orders-menu-bar">
+    <div class="orders-item-title-container">
+        <h1 class="orders-admin-text">Admin kontroll</h1>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="">Hantera pizzor</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="">Hantera ingridienser</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <form method="post" action="/users/logout">
+            <input class="orders-link-to-pages" type="submit" value="Logga ut">
+        </form>
+    </div>
+</div>
+<div class="orders-all-orders">
+
+    <%= for item <- orders do %>
+
+        <div class="orders-order-item">
+            <div class="orders-item-title-container">
+                <h2 class="orders-item-title"> <%= item.pizza_name %> </h2>
+            </div>
+            <div class="orders-item-added">
+                <p class="orders-item-added-plus">+</p>
+                <%= for ingredient <- item.added_ingredients do %>
+                    <p class="orders-item-added-text"><%= ingredient %></p>
+                <% end %>
+            </div>
+            <div class="orders-item-removed">
+                <p class="orders-item-removed-minus">-</p>
+                <%= for ingredient <- item.removed_ingredients do %>
+                    <p class="orders-item-removed-text"><%= ingredient %></p>
+                <% end %>
+            </div>
+            <div class="orders-item-more-info-container">
+
+
+
+                <p class="orders-item-more-info">Vanlig pizza</p>
+                <div class="orders-item-more-info-line"></div>
+
+
+
+                <p class="orders-item-more-info">Glutenfri</p>
+            </div>
+            <div class="orders-item-orderer">
+                <p class="orders-item-orderer-text">Beställare: <%= item.customer %></p>
+            </div>
+        </div>
+
+    <% end %>
+
+</div>

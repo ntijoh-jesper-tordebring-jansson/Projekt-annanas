@@ -34,31 +34,32 @@
 		</footer>
 	</div>
 
+
 	<script>
-     	// Select the dropdown and basket link
-      const basketLink = document.querySelector('.tonys-basket-link');
-      const dropdownContent = document.querySelector('.checkout-dropdown-content');
+     	// // Select the dropdown and basket link
+      // const basketLink = document.querySelector('.tonys-basket-link');
+      // const dropdownContent = document.querySelector('.checkout-dropdown-content');
 
-      // Toggle the dropdown visibility on click of the basket link
-      basketLink.addEventListener('click', function(event) {
-          event.stopPropagation(); // Prevent the click from bubbling up to the document
-          dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
-          updateDropdown(); // Update dropdown with the latest items
-      });
+      // // Toggle the dropdown visibility on click of the basket link
+      // basketLink.addEventListener('click', function(event) {
+      //     event.stopPropagation(); // Prevent the click from bubbling up to the document
+      //     dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+      //     updateDropdown(); // Update dropdown with the latest items
+      // });
 
-      // Prevent dropdown from closing when clicked directly
-      dropdownContent.addEventListener('click', function(event) {
-          event.stopPropagation(); // Prevent the click from bubbling up to the document
-      });
+      // // Prevent dropdown from closing when clicked directly
+      // dropdownContent.addEventListener('click', function(event) {
+      //     event.stopPropagation(); // Prevent the click from bubbling up to the document
+      // });
 
-      // Hide the dropdown when clicking outside of the basket or dropdown
-      document.addEventListener('click', function(event) {
-          if (!basketLink.contains(event.target) && !dropdownContent.contains(event.target)) {
-              dropdownContent.style.display = 'none';
-          }
-      });
+      // // Hide the dropdown when clicking outside of the basket or dropdown
+      // document.addEventListener('click', function(event) {
+      //     if (!basketLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+      //         dropdownContent.style.display = 'none';
+      //     }
+      // });
 
-
+//
 
 
 
@@ -141,6 +142,7 @@
 
 
 
-	</script>
+		</script>
+
 </body>
 </html>

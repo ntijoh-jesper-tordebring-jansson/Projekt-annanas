@@ -19,8 +19,8 @@ defmodule Pluggy.Cart do
     )
   end
 
-  def all(uuid) do
-    Postgrex.query!(DB, "SELECT * FROM carts WHERE uuid = $1", [uuid]).rows
+  def all(conn) do
+    Postgrex.query!(DB, "SELECT * FROM carts WHERE uuid = $1", [conn.private.plug_session["cart"]]).rows
     |> to_struct_list
   end
 
