@@ -43,9 +43,6 @@ defmodule Pluggy.Router do
   # Admin - orders page
   get("/admin/orders", do: AdminController.orders(conn))
 
-  #Adds pizza to cart
-  get("/menu/add/:id", do: CartController.add(conn, id))
-
   ## POST-requests ##
 
   # Admin - login

@@ -89,7 +89,7 @@
       }
 
 
-    </script>
+    </script> -->
 
     <script>
         function showPopup() {
@@ -107,4 +107,3 @@
 
 conn.cookies["cart"]
 Map.put(conn.cookies, "cart", UUID.uuid4)
--->

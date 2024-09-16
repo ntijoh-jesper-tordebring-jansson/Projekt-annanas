@@ -13,7 +13,7 @@ defmodule Pluggy.PizzaController do
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", data: []))
+    send_resp(conn, 200, render("pizzas/checkout", Cart.all(conn.cookies["cart"])))
   end
 
   ##

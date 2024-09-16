@@ -38,7 +38,7 @@ defmodule Mix.Tasks.Seed do
     ## Create table orders ##
     Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, is_done BOOLEAN, size BOOLEAN NOT NULL, gluten BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
     ## Create table carts ##
-    Postgrex.query!(DB, "Create TABLE carts (id SERIAL, uuid VARCHAR(255) NOT NULL, pizza_id VARCHAR(255) NOT NULL, add_ingredients JSONB NOT NULL, remove_ingredients JSONB NOT NULL)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE carts (id SERIAL, uuid VARCHAR(255) NOT NULL, pizza_id VARCHAR(255) NOT NULL, add_ingredients JSONB NOT NULL, remove_ingredients JSONB NOT NULL, gluten BOOLEAN NOT NULL, size BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table users ##
     Postgrex.query!(DB, "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, hashed_password VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
