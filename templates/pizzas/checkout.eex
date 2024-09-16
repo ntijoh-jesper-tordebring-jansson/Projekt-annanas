@@ -3,16 +3,18 @@
 
     <div class="checkout-cart-box">
         <div class="checkout-cart-items">
-            <!-- Här läggs varorna till i varukorgen -->
-            <div class="checkout-cart-item">
-                <p>Exempelvara 1 - 100 kr</p>
-                <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort">
-            </div>
-            <div class="checkout-cart-item">
-                <p>Exempelvara 2 - 200 kr</p>
-                <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort">
-            </div>
-            <!-- Lägg till fler varor här -->
+            <%= for cart <- carts do %>
+                <%= for item <- pizzas do %>
+                    <%= if cart.pizza_id == item.id do %>
+                    <div class="checkout-cart-item">
+                        <img src="<%= item.img_path %>" alt="item">
+                        <p><%= item.pizza_id %></p>
+
+                        <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort">
+                    </div>
+                    <% end %>
+                <% end %>
+            <% end %>
         </div>
     </div>
 
@@ -85,6 +87,10 @@
         // Call this function when the page loads
         document.addEventListener('DOMContentLoaded', updateBasket);
     </script> -->
+
+    <script>
+
+    </script>
 
 
 

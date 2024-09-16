@@ -7,13 +7,14 @@ defmodule Pluggy.PizzaController do
 
   def index(conn) do
     if conn.cookies["cart"] == nil do
-      Map.put(conn.cookies, "cart", UUID.uuid4)
+      Map.put(conn.cookies, "cart", UUID.uuid4())
     end
+
     send_resp(conn, 200, render("pizzas/index", data: []))
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", Cart.all(conn.cookies["cart"])))
+    send_resp(conn, 200, render("pizzas/checkout", carts: Cart.all(conn.cookies["cart"]), pizzas: Pizza.all()))
   end
 
   ##
@@ -22,7 +23,11 @@ defmodule Pluggy.PizzaController do
   end
 
   def edit(conn, id) do
-    send_resp(conn, 200, render("pizzas/edit", pizza: Pizza.get(id), ingredients: Pizza.ingredients))
+    send_resp(
+      conn,
+      200,
+      render("pizzas/edit", pizza: Pizza.get(id), ingredients: Pizza.ingredients())
+    )
   end
 
   # defp redirect(conn, url) do
