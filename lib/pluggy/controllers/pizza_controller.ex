@@ -5,6 +5,7 @@ defmodule Pluggy.PizzaController do
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
+  # Send back index page when requested
   def index(conn) do
     if conn.private.plug_session["user_id"] == nil do
       Plug.Conn.put_session(conn, :cart, UUID.uuid4())
@@ -18,7 +19,7 @@ defmodule Pluggy.PizzaController do
     send_resp(conn, 200, render("pizzas/checkout", Cart.all(conn.cookies["cart"])))
   end
 
-  ##
+  # Send back menu page when requested with data (all pizzas)
   def menu(conn) do
     send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all()))
   end

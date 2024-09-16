@@ -1,6 +1,6 @@
 defmodule Pluggy.AdminController do
 
-  # require IEx
+  require IEx
 
   alias Pluggy.Admin
   # alias Pluggy.User
@@ -15,7 +15,8 @@ defmodule Pluggy.AdminController do
     if conn.private.plug_session["user_id"] == nil do
       redirect(conn, "/admin")
     else
-      send_resp(conn, 200, render("Pizzas/orders", orders: Admin.all(), layout: false))
+      send_resp(conn, 200, render("pizzas/orders", orders: Admin.all()))
+      # send_resp(conn, 200, render("Pizzas/orders", orders: Admin.all(), layout: false))
     end
   end
 
