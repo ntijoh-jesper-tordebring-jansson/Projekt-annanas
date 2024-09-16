@@ -165,26 +165,13 @@ footer.tonys-footer {
 /*
 Specifik stil för Tony's Pizzerias index-sida
 */
-.tonys-index .tonys-hero {
-    height: 400px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-}
 
-.tonys-index .tonys-hero-text {
-    text-align: center;
-}
 
 .tonys-index .tonys-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 75px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -211,11 +198,63 @@ Specifik stil för Tony's Pizzerias index-sida
     font-size: 1.2rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin: 20px;
 }
 
 .tonys-index .tonys-menu-link:hover {
     background-color: #e03e00;
 }
+
+/*
+About us
+*/
+
+/* Container Styling */
+.container-about-us {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Styling */
+.section-about-us,
+.section-contact-info,
+.section-location-info {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-about-us-img,
+.section-contact-info-img,
+.section-location-info-img {
+    width: 50%;
+    height: 450px;
+    border-radius: 8px 0 0 8px;
+}
+
+.text-box {
+    padding: 40px;
+    width: 50%;
+}
+
+/* Typography */
+.section-about-us-h2,
+.section-contact-info-h2,
+.section-location-info-h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.section-about-us-p,
+.section-contact-info-p,
+.section-location-info-p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
 
 /*
 Admin login

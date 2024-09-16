@@ -28,6 +28,9 @@ defmodule Pluggy.Router do
   # Index page
   get("/", do: PizzaController.index(conn))
 
+  # About us page
+  get("/about-us", do: PizzaController.about_us(conn))
+
   # Menu page
   get("/menu", do: PizzaController.menu(conn))
 

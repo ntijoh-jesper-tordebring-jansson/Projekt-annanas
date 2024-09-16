@@ -16,6 +16,10 @@ defmodule Pluggy.PizzaController do
     send_resp(conn, 200, render("pizzas/index", data: []))
   end
 
+  def about_us(conn) do
+    send_resp(conn, 200, render("pizzas/about_us", data: []))
+  end
+
   def checkout(conn) do
     IO.inspect(Cart.all(conn))
 
