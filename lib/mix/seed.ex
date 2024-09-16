@@ -35,7 +35,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "Create TABLE ingredients (id SERIAL, name VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table orders ##
-    Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, done BOOLEAN)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, is_done BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table users ##
     Postgrex.query!(DB, "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, hashed_password VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
@@ -73,12 +73,14 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Annanas"], pool: DBConnection.ConnectionPool)
 
     ## Seeding default users ##
-    Postgrex.query!(DB, "INSERT INTO users(username, hashed_password, role) VALUES($1, $2, $3)", ["Tony", Bcrypt.hash_pwd_salt("a"), "admin"], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO users(username, hashed_password, role) VALUES($1, $2, $3)", ["a", Bcrypt.hash_pwd_salt("a"), "admin"], pool: DBConnection.ConnectionPool)
 
 
 
     # Temporary for dev
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, done) VALUES($1, $2, $3, $4, $5)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done) VALUES($1, $2, $3, $4, $5)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done) VALUES($1, $2, $3, $4, $5)", ["ewfwefwef", ["Annawefwefnas", "Chwefwefili"], ["Tomatwfwfsås", "Mozzarwefwefella"], "Daniwfwffwfel", false], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done) VALUES($1, $2, $3, $4, $5)", ["Diawefwefwefvola", ["Annwefwfanas", "Cwefwfhili"], ["Tomatswfwfwfwås", "Mozzarffwfwfella"], "Daniwfwfwfel", false], pool: DBConnection.ConnectionPool)
   end
 
 end
