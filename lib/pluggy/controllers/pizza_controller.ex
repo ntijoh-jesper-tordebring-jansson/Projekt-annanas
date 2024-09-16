@@ -7,11 +7,14 @@ defmodule Pluggy.PizzaController do
 
   # Send back index page when requested
   def index(conn) do
+    if conn.cookies["cart"] == nil do
+      Map.put(conn.cookies, "cart", UUID.uuid4)
+    end
     send_resp(conn, 200, render("pizzas/index", data: []))
   end
 
   def checkout(conn) do
-    send_resp(conn, 200, render("pizzas/checkout", data: []))
+    send_resp(conn, 200, render("pizzas/checkout", Cart.all(conn.cookies["cart"])))
   end
 
   # Send back menu page when requested with data (all pizzas)

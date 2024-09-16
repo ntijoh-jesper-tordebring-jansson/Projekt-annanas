@@ -16,6 +16,7 @@ defmodule Pluggy.AdminController do
       redirect(conn, "/admin")
     else
       send_resp(conn, 200, render("pizzas/orders", orders: Admin.all()))
+      # send_resp(conn, 200, render("Pizzas/orders", orders: Admin.all(), layout: false))
     end
   end
 
