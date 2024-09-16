@@ -434,6 +434,43 @@ Design för edit pizza sidan
     margin-left: 10px; /* Justera avståndet mellan knappen och länken */
 }
 
+.gluten-checkbox {
+    margin-bottom: 20px;
+}
+
+.gluten-checkbox h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.gluten-checkbox label {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.pizza-size {
+    margin-bottom: 20px;
+}
+
+.pizza-size h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pizza-size label {
+    font-size: 16px;
+    color: #555;
+    margin-right: 20px;
+}
+
+.pizza-size input[type="radio"] {
+    margin-right: 5px;
+}
+
+
 /*
   Design på varukorgens sida
    */

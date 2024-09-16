@@ -8,7 +8,7 @@
               <%= if cart.pizza_id == Integer.to_string(item.id) do %>
                 <div class="checkout-cart-item">
                   <img src="<%= item.img_path %>" alt="item" class="checkout-dropdown-image">
-                  <p><%= iatem.name %> <%= if cart.add_ingredients != "" || cart.remove_ingredients != "" do %>(Ändrad) <% end %></p>
+                  <p><%= item.name %> <%= if cart.add_ingredients != "" || cart.remove_ingredients != "" do %>(Ändrad) <% end %></p>
                   <img src="/img/trashcan.png" class="checkout-trash-icon" alt="Ta bort" onclick="removeItem('<%= item.id %>')">
                 </div>
               <% end %>
