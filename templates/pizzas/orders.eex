@@ -3,10 +3,13 @@
         <h1 class="orders-admin-text">Admin kontroll</h1>
     </div>
     <div class="orders-link-to-pages-container">
-        <a class="orders-link-to-pages" href="">Hantera pizzor</a>
+        <a class="orders-link-to-pages" href="/admin/orders">Se beställningar</a>
     </div>
     <div class="orders-link-to-pages-container">
-        <a class="orders-link-to-pages" href="">Hantera ingridienser</a>
+        <a class="orders-link-to-pages" href="/admin/pizzas">Hantera pizzor</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="/admin/ingredients">Hantera ingridienser</a>
     </div>
     <div class="orders-link-to-pages-container">
         <form method="post" action="/users/logout">
@@ -18,7 +21,7 @@
 
     <%= for item <- orders do %>
 
-        <div class="orders-order-item">
+        <div class="orders-order-item" id="orders-item-<%= item.id %>">
             <div class="orders-item-title-container">
                 <h2 class="orders-item-title"> <%= item.pizza_name %> </h2>
             </div>
@@ -35,19 +38,75 @@
                 <% end %>
             </div>
             <div class="orders-item-more-info-container">
-
-
-
-                <p class="orders-item-more-info">Vanlig pizza</p>
+                <%= if item.size == true do %>
+                    <p class="orders-item-more-info">Vanlig pizza</p>
+                <% else %>
+                    <p class="orders-item-more-info">Familjepizza</p>
+                <% end %>
                 <div class="orders-item-more-info-line"></div>
-
-
-
-                <p class="orders-item-more-info">Glutenfri</p>
+                <%= if item.gluten == true do %>
+                    <p class="orders-item-more-info">Glutenfri</p>
+                <% else %>
+                    <p class="orders-item-more-info">Inga allergier</p>
+                <% end %>
             </div>
             <div class="orders-item-orderer">
                 <p class="orders-item-orderer-text">Beställare: <%= item.customer %></p>
             </div>
+            <div class="orders-item-buttons-container">
+
+                <div class="orders-item-buttons" id="orders-done-button-<%= item.id %>">
+
+                    <%= if item.is_done == true do %>
+
+                        <form method="post" action="/admin/orders/not-done/<%= item.id %>" id="orders-done-button-<%= item.id %>">
+                            <input class="orders-item-buttons-button" type="submit" value="Inte färdig" id="orders-done-button-color-<%= item.id %>">
+                        </form>
+
+                    <% else %>
+
+                        <form method="post" action="/admin/orders/done/<%= item.id %>">
+                            <input class="orders-item-buttons-button" type="submit" value="Färdig">
+                        </form>
+
+                    <% end %>
+
+                </div>
+
+                <div class="orders-item-buttons" id="orders-delete-button-<%= item.id %>">
+                    <form method="post" action="/admin/orders/delete/<%= item.id %>">
+                        <input class="orders-item-buttons-button" type="submit" value="Hämtad" id="orders-delete-button-color-<%= item.id %>">
+                    </form>
+                </div>
+
+                <%= if item.is_done == false do %>
+                    <style>
+                        #orders-delete-button-<%= item.id %> {
+                            display: none;
+                        }
+                    </style>
+                <% else %>
+                    <style>
+                        #orders-delete-button-<%= item.id %> {
+                            display: block;
+                        }
+
+                        #orders-item-<%= item.id %> {
+                            background-color: rgb(0, 190, 0);
+                        }
+
+                        #orders-delete-button-color-<%= item.id %> {
+                            background-color: rgb(250, 104, 104);
+                        }
+
+                        #orders-done-button-color-<%= item.id %> {
+                            background-color: yellow;
+                        }
+                    </style>
+                <% end %>
+
+            </div>
+
         </div>
 
     <% end %>

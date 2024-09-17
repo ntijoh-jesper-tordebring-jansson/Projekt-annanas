@@ -1,0 +1,126 @@
+<div class="orders-menu-bar">
+    <div class="orders-item-title-container">
+        <h1 class="orders-admin-text">Admin kontroll</h1>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="/admin/orders">Se beställningar</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="/admin/pizzas">Hantera pizzor</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <a class="orders-link-to-pages" href="/admin/ingredients">Hantera ingredienser</a>
+    </div>
+    <div class="orders-link-to-pages-container">
+        <form method="post" action="/users/logout">
+            <input class="orders-link-to-pages" type="submit" value="Logga ut">
+        </form>
+    </div>
+</div>
+
+<div class="orders-ingredients-list-container">
+    <h3 class="orders-ingredients-list-title">Alla tillagda pizzor</h3>
+    <div class="orders-ingredients-list">
+        <%= for item <- pizzas do %>
+
+            <div class="orders-pizzas-item">
+
+                <div>
+                    <img class="orders-pizzas-item-img" src="<%= item.img_path %>">
+                </div>
+
+                <div class="orders-pizzas-item-description">
+                    <div class="orders-pizzas-item-name-container">
+                        <p class="orders-pizzas-item-name"><%= item.name %></p>
+                    </div>
+                    <div class="orders-pizzas-item-line"></div>
+                    <div class="orders-pizzas-item-ingredients-container">
+                        <%= for ingredient <- item.containing_ingredients do %>
+                            <p class="menu-pizza-ingridient"><%= ingredient %></p>
+                        <% end %>
+                    </div>
+                </div>
+
+            </div>
+
+
+        <% end %>
+    </div>
+</div>
+
+<div class="orders-ingredients-buttons-container">
+    <h2 class="orders-ingredients-buttons-title">Hantera pizzor</h2>
+    <div class="order-add-ingredient">
+        <h3 class="order-add-pizza-title">Lägg till pizza</h3>
+        <form class="order-add-pizza-form" method="post" action="/admin/pizza/add" enctype="multipart/form-data">
+
+            <input class="order-add-pizza-img-input" type="file" name="file-input">
+
+            <input class="order-add-pizza-text" type="text" placeholder="Namn" name="text-input" required>
+
+            <div class="order-add-pizza-dropdown">
+
+                <p>Välj ingredienser</p>
+
+                <div class="order-add-pizza-dropdown-content">
+
+                    <%= for item <- ingredients do %>
+
+                        <label class="order-add-pizza-label"><input type="checkbox" name="ingredients:<%= item.name %>" value="<%= item.name %>"> <%= item.name %></label>
+
+                    <% end %>
+                </div>
+            </div>
+
+            <input class="order-add-ingredient-submit" type="submit" value="Lägg till">
+
+        </form>
+
+
+        <!--
+            <script>
+// JavaScript to handle the dropdown behavior and collect selected values
+document.addEventListener('click', function(event) {
+  var dropdown = document.querySelector('.dropdown-content');
+  if (!dropdown.contains(event.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
+function getSelectedFruits() {
+  var checkboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+  var selectedFruits = [];
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      selectedFruits.push(checkbox.value);
+    }
+  });
+  return selectedFruits;
+}
+</script>
+
+-->
+
+
+    </div>
+    <div class="order-remove-ingredient">
+        <h3 class="order-remove-ingredient-title">Ta bort pizza</h3>
+        <form class="order-remove-ingredient-form" method="post" action="/admin/pizza/remove">
+            <input class="order-remove-ingredient-list" list="order-remove-ingredient-pizza-ingredients" name="list-input" required>
+            <datalist id="order-remove-ingredient-pizza-ingredients" aria-placeholder="Pizza">
+                <%= for item <- pizzas do %>
+                    <option value="<%= item.name %>" />
+                <% end %>
+            </datalist>
+            <input class="order-remove-ingredient-submit" type="submit" value="Ta bort">
+        </form>
+    </div>
+
+    <div class="order-restore-default">
+        <form class="order-restore-default-form" method="post" action="/admin/pizzas/defualt">
+            <input class="order-restore-default-submit" type="submit" value="Återställ standard pizzor">
+        </form>
+    </div>
+
+
+</div>

@@ -32,6 +32,14 @@ a {
     font-family: "Roboto", sans-serif;
 }
 
+button {
+    font-family: "Roboto", sans-serif;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
 /*
 Specifik stil för Tony's Pizzerias layout
 */
@@ -93,8 +101,8 @@ Specifik stil för Tony's Pizzerias layout
 
 /* Dropdown Content (Hidden by Default) */
 .checkout-dropdown-content {
-    border-radius: 10px;
-    transform: translateY(100px);
+    border-radius: 0.68vw;
+    transform: translateY(6.803vw);
     transform: translateX(-50px);
     display: none;
     position: absolute;
@@ -102,7 +110,7 @@ Specifik stil för Tony's Pizzerias layout
     min-width: 18vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    padding: 10px; /* To add some spacing inside the dropdown */
+    padding: 0.68vw; /* To add some spacing inside the dropdown */
 }
 
 .checkout-dropdown-item {
@@ -122,12 +130,12 @@ Specifik stil för Tony's Pizzerias layout
     width: 50px; /* Adjust the size of the image */
     height: 50px;
     object-fit: cover; /* Ensures the image fits well within the bounds */
-    margin-right: 10px;
+    margin-right: 0.68vw;
 }
 
 .checkout-dropdown-name {
     flex: 1; /* Takes the remaining space between image and price */
-    padding-left: 10px;
+    padding-left: 0.68vw;
 }
 .checkout-trash {
     display: block;
@@ -173,7 +181,7 @@ Specifik stil för Tony's Pizzerias index-sida
     align-items: center;
     color: white;
     font-size: 2rem;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 0.68vw rgba(0, 0, 0, 0.7);
 }
 
 .tonys-index .tonys-hero-text {
@@ -235,7 +243,7 @@ Admin login
     padding: 20px;
     background-color: #fff; /* Vit bakgrundsfärg för boxen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Skugga för att ge djup */
-    border-radius: 10px; /* Rundade hörn */
+    border-radius: 0.68vw; /* Rundade hörn */
     width: 100%;
     max-width: 400px; /* Maximal bredd på boxen */
 }
@@ -251,15 +259,15 @@ Admin login
     width: calc(
         100% - 22px
     ); /* Gör att textinmatningsfälten fyller boxen minus padding och border */
-    padding: 10px;
-    margin-bottom: 10px; /* Avstånd mellan fälten */
-    border: 1px solid #ccc; /* Rand runt fälten */
+    padding: 0.68vw;
+    margin-bottom: 0.68vw; /* Avstånd mellan fälten */
+    border: 0.068vw solid #ccc; /* Rand runt fälten */
     border-radius: 5px; /* Rundade hörn på fälten */
 }
 
 #login-container input[type="submit"] {
     width: 100%;
-    padding: 10px;
+    padding: 0.68vw;
     background-color: lightskyblue; /* Blå bakgrundsfärg för knappen */
     color: white; /* Vit textfärg på knappen */
     border: none; /* Ingen rand runt knappen */
@@ -390,13 +398,13 @@ Design för edit pizza sidan
     max-height: 300px; /* Justera höjden som passar din design */
     overflow-y: auto; /* Lägg till scrollbar om innehållet är för långt */
     margin-bottom: 20px;
-    border: 1px solid #ddd; /* Valfri kantlinje */
-    padding: 10px; /* Valfritt inre avstånd */
+    border: 0.068vw solid #ddd; /* Valfri kantlinje */
+    padding: 0.68vw; /* Valfritt inre avstånd */
     background-color: #f9f9f9; /* Valfri bakgrundsfärg */
 }
 
 .ingredient-list div {
-    margin-bottom: 10px;
+    margin-bottom: 0.68vw;
 }
 
 .ingredient-list label {
@@ -406,7 +414,7 @@ Design för edit pizza sidan
 
 .pizza-edit-container input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 0.68vw;
     font-size: 16px;
     margin-bottom: 20px;
 }
@@ -415,7 +423,7 @@ Design för edit pizza sidan
 .pizza-edit-container a.edit-back-to-menu {
     background-color: #28a745;
     color: white;
-    padding: 10px 20px;
+    padding: 0.68vw 20px;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -431,7 +439,7 @@ Design för edit pizza sidan
 }
 
 .pizza-edit-container a.edit-back-to-menu {
-    margin-left: 10px; /* Justera avståndet mellan knappen och länken */
+    margin-left: 0.68vw; /* Justera avståndet mellan knappen och länken */
 }
 
 /*
@@ -444,7 +452,7 @@ Design för edit pizza sidan
     margin: 20px auto;
     background: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.68vw rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
@@ -454,9 +462,9 @@ Design för edit pizza sidan
 }
 
 .checkout-cart-box {
-    border: 1px solid #ddd;
+    border: 0.068vw solid #ddd;
     border-radius: 4px;
-    padding: 10px;
+    padding: 0.68vw;
     margin-bottom: 20px;
     max-height: 400px; /* Justera storleken på varukorgsboxen */
     overflow-y: auto;
@@ -467,8 +475,8 @@ Design för edit pizza sidan
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    padding: 0.68vw 0;
+    border-bottom: 0.068vw solid #eee;
 }
 
 .checkout-cart-item p {
@@ -497,15 +505,15 @@ Design för edit pizza sidan
 
 .checkout-name-section input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 0.68vw;
+    border: 0.068vw solid #ddd;
     border-radius: 4px;
 }
 
 .checkout-order-button {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 0.68vw;
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -633,4 +641,321 @@ Design för edit pizza sidan
 
 .orders-item-orderer-text {
     font-size: 1.224vw;
+}
+
+.orders-item-buttons-container {
+    border-bottom: 0.07vw solid black;
+    padding-bottom: 0.68vw;
+    padding-top: 0.68vw;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.orders-item-buttons {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.orders-item-buttons-button {
+    display: block;
+    font-size: 1.3vw;
+    background-color: white;
+    border: 0.068vw solid black;
+    border-radius: 2.041vw;
+    padding-left: 1.361vw;
+    padding-right: 1.361vw;
+    padding-top: 0.68vw;
+    padding-bottom: 0.68vw;
+}
+
+/*
+    Orders ingridient
+*/
+
+.orders-ingredients-list-container {
+    margin-left: 22%;
+    width: 30%;
+}
+
+.orders-ingredients-buttons-container {
+    position: fixed;
+    left: 70%;
+    top: 0;
+    bottom: 0;
+    right: 0%;
+    border-left: 0.07vw solid black;
+}
+
+.orders-ingredients-list-title {
+    font-size: 1.633vw;
+    margin-top: 2.449vw;
+    padding-bottom: 0.816vw;
+    border-bottom: solid 0.068vw black;
+    margin-bottom: 1.633vw;
+}
+
+.orders-ingredients-list-item {
+    font-size: 1.633vw;
+    margin-bottom: 1.088vw;
+}
+
+.orders-ingredients-buttons-title {
+    text-align: center;
+    font-size: 1.905vw;
+    margin-bottom: 2.721vw;
+    margin-top: 2.313vw;
+}
+
+.order-add-ingredient {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20.408vw;
+    height: 17.687vw;
+    display: flex;
+    flex-direction: column;
+    border: 0.136vw solid black;
+    border-radius: 2.721vw;
+    margin-bottom: 4.082vw;
+}
+
+.order-add-ingredient-title {
+    text-align: center;
+    margin-top: 2.721vw;
+    margin-bottom: 2.041vw;
+    font-size: 1.633vw;
+}
+
+.order-add-ingredient-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-add-ingredient-text {
+    display: block;
+    margin-bottom: 2.449vw;
+    width: 10.204vw;
+    height: 2.449vw;
+    border: 0.068vw solid black;
+    border-radius: 0.68vw;
+    padding-left: 0.68vw;
+    font-size: 1.224vw;
+}
+
+.order-add-ingredient-submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.224vw;
+    padding-top: 0.544vw;
+    padding-bottom: 0.544vw;
+    padding-left: 1.088vw;
+    padding-right: 1.088vw;
+    border: 0.068vw solid black;
+    border-radius: 1.633vw;
+    background-color: white;
+}
+
+.order-remove-ingredient {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20.408vw;
+    height: 17.687vw;
+    display: flex;
+    flex-direction: column;
+    border: 0.136vw solid black;
+    border-radius: 2.721vw;
+}
+
+.order-remove-ingredient-title {
+    text-align: center;
+    margin-top: 2.721vw;
+    margin-bottom: 2.041vw;
+    font-size: 1.633vw;
+}
+
+.order-remove-ingredient-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-remove-ingredient-list {
+    display: block;
+    margin-bottom: 2.449vw;
+    width: 10.204vw;
+    height: 2.449vw;
+    border: 0.068vw solid black;
+    border-radius: 0.68vw;
+    padding-left: 0.68vw;
+    font-size: 1.224vw;
+}
+
+.order-remove-ingredient-submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.224vw;
+    padding-top: 0.544vw;
+    padding-bottom: 0.544vw;
+    padding-left: 1.088vw;
+    padding-right: 1.088vw;
+    border: 0.068vw solid black;
+    border-radius: 1.633vw;
+    background-color: white;
+}
+
+.order-default-all-ingredients-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20.408vw;
+    height: 17.687vw;
+    display: flex;
+    flex-direction: column;
+    border: 0.136vw solid black;
+    border-radius: 2.721vw;
+    align-items: center;
+}
+
+.order-default-all-ingredients {
+    font-size: 1.8vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-restore-default {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-restore-default-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-restore-default-submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    font-size: 1.224vw;
+    padding-top: 0.544vw;
+    padding-bottom: 0.544vw;
+    padding-left: 1.088vw;
+    padding-right: 1.088vw;
+    border: 0.068vw solid black;
+    border-radius: 1.633vw;
+    background-color: white;    
+}
+
+/*
+    Menu manage pizza
+*/
+
+.orders-pizzas-item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.68vw;
+    margin-bottom: 0.68vw;
+    border: 0.068vw solid black;
+    padding: 0.68vw;
+}
+
+.orders-pizzas-item-img {
+    width: 6.803vw;
+    height: 6.803vw;
+}
+
+.orders-pizzas-item-description {
+    display: flex;
+    flex-direction: row;
+}
+
+.orders-pizzas-item-name-container {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.orders-pizzas-item-name {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-left: 14px;
+    min-width: 150px;
+}
+
+.orders-pizzas-item-line {
+    border-right: 0.07vw solid black;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.orders-pizzas-item-ingredients-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.orders-pizzas-item-ingredients {
+    font-size: 18px;
+    display: block;
+}
+
+.order-add-pizza-form {
+
+}
+
+.order-add-pizza-img-input {
+    font-size: 18px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.order-add-pizza-text {
+    display: block;
+    width: 10.204vw;
+    height: 2.449vw;
+    border: 0.068vw solid black;
+    border-radius: 0.68vw;
+    padding-left: 0.68vw;
+    font-size: 1.224vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+}
+
+.order-add-pizza-title {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    font-size: 1.633vw;    
+}
+
+.order-add-pizza-dropdown {
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-add-pizza-dropdown-content {
+    text-align: center;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.order-add-pizza-dropdown-content .order-add-pizza-label {
+    display: block;
+    margin-top: 0.68vw;
+}
+
+.order-add-pizza-dropdown:hover .order-add-pizza-dropdown-content {
+    display: block;
 }
