@@ -710,3 +710,44 @@ Design för edit pizza sidan
 .orders-item-orderer-text {
     font-size: 1.224vw;
 }
+
+
+/*
+Closed side
+*/
+
+/* CSS för stängt-meddelanden */
+.closed-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+}
+
+.closed-message h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.closed-message p, .closed-message ul {
+    font-size: 1.2em;
+}
+
+.closed-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.closed-message li {
+    margin: 5px 0;
+}
+
+.closed-message p {
+    margin-top: 20px;
+    font-style: italic;
+}
