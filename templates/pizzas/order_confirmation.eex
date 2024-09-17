@@ -27,17 +27,6 @@
                     <% end %>
                 </div>
 
-                <!-- Edit and Add to cart buttons the block -->
-                <div class="menu-buttons">
-                    <a href="/menu/edit/<%= item.id %>">
-                        <button class="menu-edit-button">Anpassa</button>
-                    </a>
-                    <div>
-                        <form method="post" action="/menu/add">
-                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button"  name="pizza_name" value="<%= item.name %>">Köp</button>
-                        </form>
-                    </div>
-                </div>
 
             </div>
 

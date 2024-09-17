@@ -40,6 +40,12 @@ defmodule Pluggy.Router do
   # Checkout cart page
   get("/checkout", do: PizzaController.checkout(conn))
 
+  # Confirm order page
+  post("/checkout/done", do: CartController.submit_order(conn, conn.body_params))
+
+  # Remove item from cart
+  post("/checkout/remove", do: CartController.remove(conn, conn.body_params))
+
   # Admin page
   get("/admin", do: AdminController.admin(conn))
 

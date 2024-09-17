@@ -2,7 +2,7 @@ defmodule Pluggy.Cart do
   defstruct(
     id: nil,
     uuid: "",
-    pizza_id: "",
+    pizza_name: "",
     add_ingredients: "",
     remove_ingredients: "",
     size: "",
@@ -10,6 +10,14 @@ defmodule Pluggy.Cart do
   )
 
   alias Pluggy.Cart
+
+  def add_to_cart(id) do
+    Postgrex.query!(
+      DB,
+      "INSERT INTO cart (uuid, pizza_name, gluten, size) VALUES($1, $2,$3, $4,)",
+      id
+    )
+  end
 
   def all(conn) do
     Postgrex.query!(DB, "SELECT * FROM carts WHERE uuid = $1", [conn.private.plug_session["cart"]]).rows
@@ -37,7 +45,8 @@ defmodule Pluggy.Cart do
         "",
         false,
         true
-      ])
+      ]
+    )
   end
 
   def add_edit_cart(conn, id, params) do
@@ -46,10 +55,14 @@ defmodule Pluggy.Cart do
     ## Get cart_id from session ##
     cart_id = conn.private.plug_session["cart"]
 
-    pizza_ingredients = Postgrex.query!(DB, "SELECT containing_ingredients FROM pizzas WHERE id = $1 LIMIT 1", [String.to_integer(id)]).rows
+    pizza_ingredients =
+      Postgrex.query!(DB, "SELECT containing_ingredients FROM pizzas WHERE id = $1 LIMIT 1", [
+        String.to_integer(id)
+      ]).rows
+
     pizza_ingredients2 = hd(hd(pizza_ingredients))
-    add_ingredients = (params["ingredients"] -- pizza_ingredients2)
-    remove_ingredients = (pizza_ingredients2 -- params["ingredients"])
+    add_ingredients = params["ingredients"] -- pizza_ingredients2
+    remove_ingredients = pizza_ingredients2 -- params["ingredients"]
 
     # ## Update cart in DB ##
     # Cart.update_cart(new_cart)
@@ -69,15 +82,16 @@ defmodule Pluggy.Cart do
           "familj" -> false
           _ -> true
         end
-      ])
+      ]
+    )
   end
 
   def to_struct_list(rows) do
-    for [id, uuid, pizza_id, add_ingredients, remove_ingredients, size, gluten] <- rows,
+    for [id, uuid, pizza_name, add_ingredients, remove_ingredients, size, gluten] <- rows,
         do: %Cart{
           id: id,
           uuid: uuid,
-          pizza_id: pizza_id,
+          pizza_name: pizza_name,
           add_ingredients: add_ingredients,
           remove_ingredients: remove_ingredients,
           size: size,

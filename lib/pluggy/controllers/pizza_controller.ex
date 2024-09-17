@@ -3,7 +3,7 @@ defmodule Pluggy.PizzaController do
 
   alias Pluggy.Cart
   alias Pluggy.Pizza
-  import Pluggy.Template, only: [render: 2]
+  import Pluggy.Template, only: [render: 3, render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
   # Send back index page when requested
@@ -13,7 +13,7 @@ defmodule Pluggy.PizzaController do
       |> redirect("/")
     end
 
-    send_resp(conn, 200, render("pizzas/index", data: []))
+    send_resp(conn, 200, render(conn, "pizzas/index", data: []))
   end
 
   def about_us(conn) do
@@ -26,20 +26,20 @@ defmodule Pluggy.PizzaController do
     send_resp(
       conn,
       200,
-      render("pizzas/checkout", carts: Cart.all(conn), pizzas: Pizza.all())
+      render(conn, "pizzas/checkout", carts: Cart.all(conn), pizzas: Pizza.all())
     )
   end
 
   # Send back menu page when requested with data (all pizzas)
   def menu(conn) do
-    send_resp(conn, 200, render("pizzas/menu", pizzas: Pizza.all()))
+    send_resp(conn, 200, render(conn, "pizzas/menu", pizzas: Pizza.all()))
   end
 
   def edit(conn, id) do
     send_resp(
       conn,
       200,
-      render("pizzas/edit", pizza: Pizza.get(id), ingredients: Pizza.ingredients())
+      render(conn, "pizzas/edit", pizza: Pizza.get(id), ingredients: Pizza.ingredients())
     )
   end
 
