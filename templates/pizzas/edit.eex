@@ -36,7 +36,7 @@
     </div>
 
     <br>
-
+    <input type = "hidden" name = "pizza_name" value = "<%= pizza.name %>">
     <button type="submit">Lägg till i varukorgen</button>
     <a href="/menu" class="edit-back-to-menu">Tillbaka till menyn (sparar ej ändringar)</a>
   </form>
