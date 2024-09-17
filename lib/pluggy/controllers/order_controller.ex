@@ -52,7 +52,7 @@ defmodule Pluggy.OrderController do
         200,
         render(conn, "pizzas/order_confirmation",
           pizzas: Pizza.all(),
-          carts: Cart.all(),
+          orders: Order.all(),
           customer: customer
         )
       )
