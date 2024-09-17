@@ -1,8 +1,8 @@
 defmodule Pluggy.Order do
   defstruct id: nil,
             pizza_name: nil,
-            added_ingredients: nil,
-            removed_ingredients: nil,
+            added_ingredients: [],
+            removed_ingredients: [],
             customer: nil,
             is_done: false,
             size: nil,

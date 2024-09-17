@@ -86,51 +86,6 @@ defmodule Mix.Tasks.Seed do
     ## Seeding default users ##
     Postgrex.query!(DB, "INSERT INTO users(username, hashed_password, role) VALUES($1, $2, $3)", ["a", Bcrypt.hash_pwd_salt("a"), "admin"], pool: DBConnection.ConnectionPool)
 
-
-
-    
   end
-
-
-
-  # defp seed_data(table \\ "all") do
-  #   IO.puts("Seeding data")
-
-  #   if table == "pizzas" || table == "all" do
-  #     ## Seeding default pizzas ##
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Margherita", "/img/pizzas/margherita.svg", ["Tomatsås", "Mozzarella", "Basilika"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Marinara", "/img/pizzas/marinara.svg", ["Tomatsås"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Prosciutto e funghi", "/img/pizzas/prosciutto-e-funghi.svg", ["Tomatsås", "Mozzarella", "Skinka", "Svamp"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Quattro stagiono", "/img/pizzas/quattro-stagioni.svg", ["Tomatsås", "Mozzarella", "Skinka", "Svamp", "Kronärtskocka", "Oliver"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Capricciosa", "/img/pizzas/capricciosa.svg", ["Tomatsås", "Mozzarella", "Skinka", "Svamp", "Kronärtskocka"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Quattro formaggi", "/img/pizzas/quattro-formaggi.svg", ["Tomatsås", "Mozzarella", "Parmesan", "Pecorino", "Gorgonzola"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Ortolana", "/img/pizzas/ortolana.svg", ["Tomatsås", "Mozzarella", "Paprika", "Aubergine", "Zucchini"]], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO pizzas(name, img_path, containing_ingredients) VALUES($1, $2, $3)", ["Diavola", "/img/pizzas/diavola.svg", ["Tomatsås", "Mozzarella", "Salami", "Paprika", "Chili"]], pool: DBConnection.ConnectionPool)
-  #   end
-
-  #   if table == "ingredients" || table == "all" do
-  #     ## Seeding default ingredients ##
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Tomatsås"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Mozzarella"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Basilika"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Skinka"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Svamp"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Kronärtskocka"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Oliver"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Parmesan"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Pecorino"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Gorgonzola"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Paprika"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Aubergine"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Zucchini"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Salami"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Chili"], pool: DBConnection.ConnectionPool)
-  #     Postgrex.query!(DB, "INSERT INTO ingredients(name) VALUES($1)", ["Annanas"], pool: DBConnection.ConnectionPool)
-  #   end
-
-  #   if table == "users" || table == "all" do
-  #     ## Seeding default users ##
-  #     Postgrex.query!(DB, "INSERT INTO users(username, hashed_password, role) VALUES($1, $2, $3)", ["a", Bcrypt.hash_pwd_salt("a"), "admin"], pool: DBConnection.ConnectionPool)
-  #   end
 
 end

@@ -21,7 +21,7 @@ defmodule Pluggy.AdminController do
   end
 
   def pizzas(conn) do
-    send_resp(conn, 200, render("pizzas/manage_pizzas", [pizzas: Manage_Pizzas.all(), ingredients: Manage_Ingredients.all()], "admin_layout"))
+    send_resp(conn, 200, render(conn, "pizzas/manage_pizzas", [pizzas: Manage_Pizzas.all(), ingredients: Manage_Ingredients.all()], "admin_layout"))
   end
 
   def remove_pizza(conn, params) do
@@ -59,7 +59,7 @@ defmodule Pluggy.AdminController do
   end
 
   def ingredients(conn) do
-    send_resp(conn, 200, render("pizzas/manage_ingredients", [ingredients: Manage_Ingredients.all()], "admin_layout"))
+    send_resp(conn, 200, render(conn, "pizzas/manage_ingredients", [ingredients: Manage_Ingredients.all()], "admin_layout"))
   end
 
   def add_ingredient(conn, params) do
