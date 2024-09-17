@@ -17,7 +17,7 @@ defmodule Pluggy.PizzaController do
   end
 
   def about_us(conn) do
-    send_resp(conn, 200, render("pizzas/about_us", data: []))
+    send_resp(conn, 200, render(conn, "pizzas/about_us"))
   end
 
   def checkout(conn) do
