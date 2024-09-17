@@ -173,7 +173,7 @@ footer.tonys-footer {
 /*
 Specifik stil för Tony's Pizzerias index-sida
 */
-<<<<<<< HEAD
+
 .tonys-index .tonys-hero {
     height: 400px;
     width: 100%;
@@ -184,9 +184,6 @@ Specifik stil för Tony's Pizzerias index-sida
     font-size: 2rem;
     text-shadow: 2px 2px 0.68vw rgba(0, 0, 0, 0.7);
 }
-=======
->>>>>>> e7ae9db78add64a59e62cab39bce81e58a8fdbd3
-
 
 .tonys-index .tonys-container {
     display: flex;
@@ -732,7 +729,6 @@ Design för edit pizza sidan
     font-size: 1.224vw;
 }
 
-<<<<<<< HEAD
 .orders-item-buttons-container {
     border-bottom: 0.07vw solid black;
     padding-bottom: 0.68vw;
@@ -1048,7 +1044,7 @@ Design för edit pizza sidan
 
 .order-add-pizza-dropdown:hover .order-add-pizza-dropdown-content {
     display: block;
-=======
+}
 
 /*
 Closed side
@@ -1088,5 +1084,4 @@ Closed side
 .closed-message p {
     margin-top: 20px;
     font-style: italic;
->>>>>>> e7ae9db78add64a59e62cab39bce81e58a8fdbd3
 }

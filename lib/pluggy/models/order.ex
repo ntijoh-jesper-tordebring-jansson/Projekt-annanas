@@ -1,3 +1,7 @@
+
+
+
+
 defmodule Pluggy.Order do
   defstruct id: nil,
             pizza_name: nil,
@@ -15,6 +19,8 @@ defmodule Pluggy.Order do
     |> to_struct_list
   end
 
+
+
   def to_struct_list(rows) do
     for [id, pizza_name, added_ingredients, remove_ingredients, customer, is_done, size, gluten] <-
           rows,
@@ -26,7 +32,7 @@ defmodule Pluggy.Order do
           customer: customer,
           is_done: is_done,
           size: size,
-          gluten: gluten
+          gluten: gluten,
         }
   end
 end

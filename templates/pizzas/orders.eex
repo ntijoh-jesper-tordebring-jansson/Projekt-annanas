@@ -38,13 +38,13 @@
                 <% end %>
             </div>
             <div class="orders-item-more-info-container">
-                <%= if item.size == true do %>
+                <%= if item.size == false do %>
                     <p class="orders-item-more-info">Vanlig pizza</p>
                 <% else %>
                     <p class="orders-item-more-info">Familjepizza</p>
                 <% end %>
                 <div class="orders-item-more-info-line"></div>
-                <%= if item.gluten == true do %>
+                <%= if item.gluten == false do %>
                     <p class="orders-item-more-info">Glutenfri</p>
                 <% else %>
                     <p class="orders-item-more-info">Inga allergier</p>

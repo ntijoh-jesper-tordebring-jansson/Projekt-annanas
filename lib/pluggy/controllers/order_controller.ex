@@ -18,7 +18,7 @@ defmodule Pluggy.OrderController do
   def submit_order(conn, params) do
     {{_year, _month, _day}, {hour, _minute, _second}} = :calendar.local_time()
 
-    if hour >= 8 and hour < 20 do
+    if hour >= 14 and hour < 20 do
       IO.puts("Ordern går igenom eftersom tiden är mellan 08 och 20.")
 
       # Collect data from users cart
@@ -30,19 +30,12 @@ defmodule Pluggy.OrderController do
       IO.puts("Submitting order")
       # add one pizza each time the funktion run
       for pizza <- cart do
-        Postgrex.query!(
-          DB,
-          "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)",
-          [
-            pizza.pizza_name,
-            pizza.add_ingredients,
-            pizza.remove_ingredients,
-            customer,
-            false,
-            pizza.size,
-            pizza.gluten
-          ]
-        )
+        added_ingredients = ensure_list(pizza.add_ingredients)
+       removed_ingredients = ensure_list(pizza.remove_ingredients)
+
+
+
+        Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", [pizza.pizza_name, added_ingredients, removed_ingredients, customer, false, pizza.size, pizza.gluten])
       end
 
       Postgrex.query!(DB, "DELETE FROM carts WHERE uuid = $1", [user_uuid])
@@ -65,7 +58,7 @@ defmodule Pluggy.OrderController do
   def closed(conn) do
     {{_year, _month, _day}, {hour, _minute, _second}} = :calendar.local_time()
 
-    if hour >= 8 and hour < 20 do
+    if hour >= 14 and hour < 20 do
       redirect(conn, "/")
     else
       send_resp(conn, 200, render(conn, "pizzas/closed"))
@@ -74,4 +67,10 @@ defmodule Pluggy.OrderController do
 
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+
+
+
+    defp ensure_list(nil), do: []
+    defp ensure_list(""), do: []
+    defp ensure_list(value), do: value
 end
