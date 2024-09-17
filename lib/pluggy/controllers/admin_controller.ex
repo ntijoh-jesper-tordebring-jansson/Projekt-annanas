@@ -1,23 +1,22 @@
 defmodule Pluggy.AdminController do
-
   require IEx
 
   alias Pluggy.Admin
   alias Pluggy.Manage_Pizzas
   alias Pluggy.Manage_Ingredients
-  import Pluggy.Template
-  import Pluggy.Template
+  # import Pluggy.Template
+  import Pluggy.Template, only: [render: 3, render: 2, render: 4]
   import Plug.Conn, only: [send_resp: 3]
 
   def admin(conn) do
-    send_resp(conn, 200, render("pizzas/admin",[]))
+    send_resp(conn, 200, render(conn, "pizzas/admin", []))
   end
 
   def orders(conn) do
     if conn.private.plug_session["user_id"] == nil do
       redirect(conn, "/admin")
     else
-      send_resp(conn, 200, render("pizzas/orders", [orders: Admin.all()], "admin_layout"))
+      send_resp(conn, 200, render(conn, "pizzas/orders", [orders: Admin.all()], "admin_layout"))
     end
   end
 

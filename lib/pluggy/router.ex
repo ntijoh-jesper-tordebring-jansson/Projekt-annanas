@@ -6,6 +6,7 @@ defmodule Pluggy.Router do
   alias Pluggy.UserController
   alias Pluggy.AdminController
   alias Pluggy.CartController
+  alias Pluggy.OrderController
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
@@ -28,6 +29,9 @@ defmodule Pluggy.Router do
   # Index page
   get("/", do: PizzaController.index(conn))
 
+  # About us page
+  get("/about-us", do: PizzaController.about_us(conn))
+
   # Menu page
   get("/menu", do: PizzaController.menu(conn))
 
@@ -36,6 +40,15 @@ defmodule Pluggy.Router do
 
   # Checkout cart page
   get("/checkout", do: PizzaController.checkout(conn))
+
+  #if closed page
+  get("/closed", do: CartController.closed(conn))
+
+  # Confirm order page
+  post("/checkout/done", do: OrderController.submit_order(conn, conn.body_params))
+
+  # Remove item from cart
+  post("/checkout/remove", do: OrderController.remove(conn, conn.body_params))
 
   # Admin page
   get("/admin", do: AdminController.admin(conn))
@@ -60,7 +73,7 @@ defmodule Pluggy.Router do
   post("/users/logout", do: UserController.logout(conn))
 
   # Edit pizza commit
-  post("/menu/edit/:id", do: PizzaController.update(conn, id, conn.body_params))
+  post("/menu/edit/:id", do: CartController.add_edit(conn, id, conn.body_params))
 
   # Add pizza
   post("/menu/add", do: CartController.add(conn, conn.body_params))

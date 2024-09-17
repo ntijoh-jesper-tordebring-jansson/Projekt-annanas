@@ -1,0 +1,25 @@
+<div class="container-about-us">
+    <div class="section-about-us">
+        <img src="/img/pizza1.jpg" alt="Bild av pizzeria" class="section-about-us-img">
+        <div class="text-box section-about-us-text">
+            <h2 class="section-about-us-h2">Vad Vi Gör</h2>
+            <p class="section-about-us-p">På Tonys Pizzeria serverar vi utsökt pizza lagad med de finaste ingredienserna. Vårt recept har gått i arv i generationer, och vi strävar efter att varje pizza ska vara en smakupplevelse. Från vår vedeldade ugn till våra hemlagade såser, vi lägger kärlek i varje steg av tillagningen.</p>
+        </div>
+    </div>
+    <div class="section-contact-info">
+        <img src="/img/pizza2.jpg" alt="Bild av pizza" class="section-contact-info-img">
+        <div class="text-box section-contact-info-text">
+            <h2 class="section-contact-info-h2">Kontaktinformation</h2>
+            <p class="section-contact-info-p">Telefon: 0123-456 789<br>
+            E-post: info@tonyspizzeria.se<br>
+            Öppettider: Mån-Fre 11:00-22:00, Lör-Sön 12:00-23:00</p>
+        </div>
+    </div>
+    <div class="section-location-info">
+        <img src="/img/pizza_place.jpg" alt="Bild av restaurangen" class="section-location-info-img">
+        <div class="text-box section-location-info-text">
+            <h2 class="section-location-info-h2">Hitta Hit</h2>
+            <p class="section-location-info-p">Vi ligger på Storgatan 1 i centrala Stockholm. Du hittar oss lätt mellan Café Fika och Bokhandeln. Välkommen in för en smakfull upplevelse!</p>
+        </div>
+    </div>
+</div>

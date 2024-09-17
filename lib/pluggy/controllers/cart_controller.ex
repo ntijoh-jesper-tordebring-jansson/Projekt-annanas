@@ -1,22 +1,22 @@
 defmodule Pluggy.CartController do
+  alias Pluggy.Pizza
+
+  require IEx
+
   alias Pluggy.Cart
-  import Pluggy.Template, only: [render: 2]
+  import Pluggy.Template, only: [render: 3, render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
   def add(conn, params) do
-    IO.puts("Adding to cart")
-
-    ## Get pizza_id from params ##
-    pizza_id = String.to_integer(params["pizza_id"])
-
-    ## Get cart_id from session cookie ##
-    cart_id = conn.cookies["cart"]
-
-    size = true
-    gluten = false
-    # ## Update cart in DB ##
-    # Cart.update_cart(new_cart)
-
-    render(conn, "/menu")
+    Cart.add_cart(conn, params)
+    redirect(conn, "/menu")
   end
+
+  def add_edit(conn, id, params) do
+    Cart.add_edit_cart(conn, id, params)
+    redirect(conn, "/menu")
+  end
+
+  defp redirect(conn, url),
+    do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
 end

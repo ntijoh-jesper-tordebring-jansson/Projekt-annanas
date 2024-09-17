@@ -21,6 +21,25 @@
     			<img src="/img/tonys-pizza-basket.svg" alt="Kundvagn" class="tonys-basket">
            	</a>
     		<div class="checkout-dropdown-content">
+            <%= for cart <- carts do %>
+                <%= for item <- pizzas do %>
+                    <%= if cart.pizza_name == item.name do %>
+                        <div class="checkout-dropdown-item" id="<%= cart.id %>">
+                            <img src="<%= item.img_path %>" alt="item" class="checkout-dropdown-image">
+                            <p><%= item.name %> <%= if cart.add_ingredients != "" || cart.remove_ingredients != "" do %>(Ändrad) <% end %></p>
+                            <form action="/checkout/remove" method="post" style="display: inline;">
+                                <input type="hidden" name="id" value="<%= cart.id %>">
+                                <button type="submit" >
+                                    <img src="/img/trashcan.png" alt="Ta bort" class="checkout-trash-icon">
+                                </button>
+                            </form>
+                        </div>
+                    <% end %>
+                <% end %>
+
+            <% end %>
+            <a href="/checkout" class="menu-buy-button">Checkout</a>
+            <p>$</p>
 
 
             </div>
@@ -33,7 +52,8 @@
 			<p>&copy; 2024 Tony's Pizzeria. Alla rättigheter förbehållna.</p>
 		</footer>
 	</div>
-<!--
+
+
 	<script>
      	// Select the dropdown and basket link
       const basketLink = document.querySelector('.tonys-basket-link');
@@ -59,88 +79,90 @@
       });
 
 
+//
 
 
 
-      // Function to update the dropdown with pizza names from localStorage
-      function updateDropdown() {
-          const dropdownContent = document.querySelector('.checkout-dropdown-content');
-          dropdownContent.innerHTML = ''; // Clear the existing content
+      // // Function to update the dropdown with pizza names from localStorage
+      // function updateDropdown() {
+      //     const dropdownContent = document.querySelector('.checkout-dropdown-content');
+      //     dropdownContent.innerHTML = ''; // Clear the existing content
 
-          // Retrieve the cart from localStorage
-          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      //     // Retrieve the cart from localStorage
+      //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-          if (cart.length === 0) {
-              dropdownContent.innerHTML = '<p>Your cart is empty!</p>';
-              return;
-          }
-
-
-          // Loop through the cart items and create dropdown items
-          cart.forEach((item, index) => {
-              const pizzaName = item.name;
-              const imgPath = item.imgPath;
+      //     if (cart.length === 0) {
+      //         dropdownContent.innerHTML = '<p>Your cart is empty!</p>';
+      //         return;
+      //     }
 
 
-              const itemDiv = document.createElement('div');
-              itemDiv.classList.add('checkout-dropdown-item');
-
-              const img = document.createElement('img');
-              img.src = imgPath;  // Placeholder image, replace with actual image path if available
-              img.alt = 'item';
-              img.classList.add('checkout-dropdown-image');
-
-              const nameSpan = document.createElement('span');
-              nameSpan.classList.add('checkout-dropdown-name');
-              nameSpan.textContent = pizzaName;
-
-              const trashLink = document.createElement('a');
-              trashLink.addEventListener('click', function() {
-                  const itemId = parseInt(this.id, 10);
-                  cart.splice(itemId, 1);
-                  localStorage.setItem('cart', JSON.stringify(cart));
-                  updateDropdown(); // Refresh the dropdown after clearing
-              });
-              trashLink.id = index;
-              trashLink.classList.add('checkout-trash');
-              trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
-
-              // Append image, name, and trash icon to the item div
-              itemDiv.appendChild(img);
-              itemDiv.appendChild(nameSpan);
-              itemDiv.appendChild(trashLink);
-
-              // Append the item div to the dropdown content
-              dropdownContent.appendChild(itemDiv);
-          });
-
-          // Create and append delete button
-          const deleteButton = document.createElement('button');
-          deleteButton.textContent = 'Clear Cart';
-          deleteButton.addEventListener('click', function() {
-              localStorage.removeItem('cart'); // Clear the cart from localStorage
-              updateDropdown(); // Refresh the dropdown after clearing
-          });
-
-          const checkoutButton = document.createElement('a');
-          checkoutButton.textContent = 'Checkout';
-          checkoutButton.classList.add('menu-buy-button');
-          checkoutButton.href = '/checkout';
-
-          const totalPrice = document.createElement('p');
-          totalPrice.textContent = '$' + cart.length * 10;
-
-          dropdownContent.appendChild(totalPrice);
-          dropdownContent.appendChild(deleteButton);
-          dropdownContent.appendChild(checkoutButton);
-
-      }
-
-      // Call this function when the page loads
-      document.addEventListener('DOMContentLoaded', updateDropdown);
+      //     // Loop through the cart items and create dropdown items
+      //     cart.forEach((item, index) => {
+      //         const pizzaName = item.name;
+      //         const imgPath = item.imgPath;
 
 
+      //         const itemDiv = document.createElement('div');
+      //         itemDiv.classList.add('checkout-dropdown-item');
 
-	</script> -->
+      //         const img = document.createElement('img');
+      //         img.src = imgPath;  // Placeholder image, replace with actual image path if available
+      //         img.alt = 'item';
+      //         img.classList.add('checkout-dropdown-image');
+
+      //         const nameSpan = document.createElement('span');
+      //         nameSpan.classList.add('checkout-dropdown-name');
+      //         nameSpan.textContent = pizzaName;
+
+      //         const trashLink = document.createElement('a');
+      //         trashLink.addEventListener('click', function() {
+      //             const itemId = parseInt(this.id, 10);
+      //             cart.splice(itemId, 1);
+      //             localStorage.setItem('cart', JSON.stringify(cart));
+      //             updateDropdown(); // Refresh the dropdown after clearing
+      //         });
+      //         trashLink.id = index;
+      //         trashLink.classList.add('checkout-trash');
+      //         trashLink.innerHTML = '<img src="/img/trashcan.png" class="checkout-trash-icon">';
+
+      //         // Append image, name, and trash icon to the item div
+      //         itemDiv.appendChild(img);
+      //         itemDiv.appendChild(nameSpan);
+      //         itemDiv.appendChild(trashLink);
+
+      //         // Append the item div to the dropdown content
+      //         dropdownContent.appendChild(itemDiv);
+      //     });
+
+      //     // Create and append delete button
+      //     const deleteButton = document.createElement('button');
+      //     deleteButton.textContent = 'Clear Cart';
+      //     deleteButton.addEventListener('click', function() {
+      //         localStorage.removeItem('cart'); // Clear the cart from localStorage
+      //         updateDropdown(); // Refresh the dropdown after clearing
+      //     });
+
+      //     const checkoutButton = document.createElement('a');
+      //     checkoutButton.textContent = 'Checkout';
+      //     checkoutButton.classList.add('menu-buy-button');
+      //     checkoutButton.href = '/checkout';
+
+      //     const totalPrice = document.createElement('p');
+      //     totalPrice.textContent = '$' + cart.length * 10;
+
+      //     dropdownContent.appendChild(totalPrice);
+      //     dropdownContent.appendChild(deleteButton);
+      //     dropdownContent.appendChild(checkoutButton);
+
+      // }
+
+      // // Call this function when the page loads
+      // document.addEventListener('DOMContentLoaded', updateDropdown);
+
+
+
+		</script>
+
 </body>
 </html>

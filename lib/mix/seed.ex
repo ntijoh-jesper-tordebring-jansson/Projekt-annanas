@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Seed do
+  alias Postgrex.Extensions.UUID
   use Mix.Task
 
   @shortdoc "Resets & seeds the DB."
@@ -42,7 +43,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "Create TABLE orders (id SERIAL, pizza_name VARCHAR(255) NOT NULL, added_ingredients JSONB NOT NULL, removed_ingredients JSONB NOT NULL, customer VARCHAR(255) NOT NULL, is_done BOOLEAN NOT NULL, size BOOLEAN NOT NULL, gluten BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table carts ##
-    Postgrex.query!(DB, "Create TABLE carts (id SERIAL, uuid VARCHAR(255) NOT NULL, pizza_id VARCHAR(255) NOT NULL, add_ingredients JSONB NOT NULL, remove_ingredients JSONB NOT NULL, gluten BOOLEAN NOT NULL, size BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE carts (id SERIAL, uuid VARCHAR(255) NOT NULL, pizza_name VARCHAR(255) NOT NULL, add_ingredients JSONB NOT NULL, remove_ingredients JSONB NOT NULL, gluten BOOLEAN NOT NULL, size BOOLEAN NOT NULL)", [], pool: DBConnection.ConnectionPool)
 
     ## Create table users ##
     Postgrex.query!(DB, "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, hashed_password VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL)", [], pool: DBConnection.ConnectionPool)
@@ -87,10 +88,7 @@ defmodule Mix.Tasks.Seed do
 
 
 
-    # Temporary for dev
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", ["Diavola", ["Annanas", "Chili"], ["Tomatsås", "Mozzarella"], "Daniel", false, false, true], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", ["ewfwefwef", ["Annawefwefnas", "Chwefwefili"], ["Tomatwfwfsås", "Mozzarwefwefella"], "Daniwfwffwfel", false, true, false], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO orders(pizza_name, added_ingredients, removed_ingredients, customer, is_done, size, gluten) VALUES($1, $2, $3, $4, $5, $6, $7)", ["Diawefwefwefvola", ["Annwefwfanas", "Cwefwfhili"], ["Tomatswfwfwfwås", "Mozzarffwfwfella"], "Daniwfwfwfel", false, true, true], pool: DBConnection.ConnectionPool)
+    
   end
 
 

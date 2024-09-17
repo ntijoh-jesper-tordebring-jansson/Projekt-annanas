@@ -173,6 +173,7 @@ footer.tonys-footer {
 /*
 Specifik stil för Tony's Pizzerias index-sida
 */
+<<<<<<< HEAD
 .tonys-index .tonys-hero {
     height: 400px;
     width: 100%;
@@ -183,16 +184,15 @@ Specifik stil för Tony's Pizzerias index-sida
     font-size: 2rem;
     text-shadow: 2px 2px 0.68vw rgba(0, 0, 0, 0.7);
 }
+=======
+>>>>>>> e7ae9db78add64a59e62cab39bce81e58a8fdbd3
 
-.tonys-index .tonys-hero-text {
-    text-align: center;
-}
 
 .tonys-index .tonys-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 75px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -219,11 +219,63 @@ Specifik stil för Tony's Pizzerias index-sida
     font-size: 1.2rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin: 20px;
 }
 
 .tonys-index .tonys-menu-link:hover {
     background-color: #e03e00;
 }
+
+/*
+About us
+*/
+
+/* Container Styling */
+.container-about-us {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Styling */
+.section-about-us,
+.section-contact-info,
+.section-location-info {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-about-us-img,
+.section-contact-info-img,
+.section-location-info-img {
+    width: 50%;
+    height: 450px;
+    border-radius: 8px 0 0 8px;
+}
+
+.text-box {
+    padding: 40px;
+    width: 50%;
+}
+
+/* Typography */
+.section-about-us-h2,
+.section-contact-info-h2,
+.section-location-info-h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.section-about-us-p,
+.section-contact-info-p,
+.section-location-info-p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
 
 /*
 Admin login
@@ -442,6 +494,43 @@ Design för edit pizza sidan
     margin-left: 0.68vw; /* Justera avståndet mellan knappen och länken */
 }
 
+.gluten-checkbox {
+    margin-bottom: 20px;
+}
+
+.gluten-checkbox h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.gluten-checkbox label {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.pizza-size {
+    margin-bottom: 20px;
+}
+
+.pizza-size h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pizza-size label {
+    font-size: 16px;
+    color: #555;
+    margin-right: 20px;
+}
+
+.pizza-size input[type="radio"] {
+    margin-right: 5px;
+}
+
+
 /*
   Design på varukorgens sida
    */
@@ -611,7 +700,7 @@ Design för edit pizza sidan
 
 .orders-item-removed-text {
     font-size: 1.224vw;
-    margin-left: 1.36vw;   
+    margin-left: 1.36vw;
 }
 
 .orders-item-more-info-container {
@@ -643,6 +732,7 @@ Design för edit pizza sidan
     font-size: 1.224vw;
 }
 
+<<<<<<< HEAD
 .orders-item-buttons-container {
     border-bottom: 0.07vw solid black;
     padding-bottom: 0.68vw;
@@ -958,4 +1048,45 @@ Design för edit pizza sidan
 
 .order-add-pizza-dropdown:hover .order-add-pizza-dropdown-content {
     display: block;
+=======
+
+/*
+Closed side
+*/
+
+/* CSS för stängt-meddelanden */
+.closed-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    font-family: Arial, sans-serif;
+}
+
+.closed-message h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.closed-message p, .closed-message ul {
+    font-size: 1.2em;
+}
+
+.closed-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.closed-message li {
+    margin: 5px 0;
+}
+
+.closed-message p {
+    margin-top: 20px;
+    font-style: italic;
+>>>>>>> e7ae9db78add64a59e62cab39bce81e58a8fdbd3
 }

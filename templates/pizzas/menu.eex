@@ -4,34 +4,11 @@
     Elixir function that loops thru all
     the pizzas and prints it out as items.
     -->
+
     <%= for item <- pizzas do %>
 
         <!-- Each pizzas "item block" -->
         <div class="menu-pizza-block">
-
-            <div id="popupModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:#fff; padding:20px; border:1px solid #ccc; z-index:1000;">
-              <form method="post" action="/menu/add">
-                <h3>Välj pizza</h3>
-                <label>Normal pizza</label>
-                <input type="radio" name="size" placeholder="Normal pizza" value=true checked>
-                <label>Stor pizza</label>
-                <input type="radio" name="size" placeholder="Stor pizza" value=false >
-
-                <h3>Välj gluten</h3>
-                <label>Ja</label>
-                <input type="radio" name="gluten" value=true checked>
-                <label>Nej</label>
-                <input type="radio" name="gluten" value=false input>
-                <h3></h3>
-                <button onclick="closePopup()">Avbryt</button>
-                <input type="submit" value="Klar" onclick="closePopup()">
-              </form>
-
-
-            </div>
-
-            <div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, 0.5); z-index:999;"></div>
-
             <div>
                 <img class="menu-pizza-img" src="<%= item.img_path %>">
             </div>
@@ -58,7 +35,7 @@
                     </a>
                     <div>
                         <form method="post" action="/menu/add">
-                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button"  name="pizza_id" value="<%= item.id %>">Köp</button>
+                        <button data-name="<%= item.img_path %>" id="<%= item.name %>" class="menu-buy-button"  name="pizza_name" value="<%= item.name %>">Köp</button>
                         </form>
                     </div>
                 </div>
@@ -91,19 +68,4 @@
 
     </script> -->
 
-    <script>
-        function showPopup() {
-            document.getElementById("popupModal").style.display = "block";
-            document.getElementById("popupOverlay").style.display = "block";
-
-        }
-
-        function closePopup() {
-          document.getElementById("popupModal").style.display = "none";
-          document.getElementById("popupOverlay").style.display = "none";
-        }
-    </script>
 </div>
-
-conn.cookies["cart"]
-Map.put(conn.cookies, "cart", UUID.uuid4)
