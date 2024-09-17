@@ -1,38 +1,64 @@
+    <h1> Din order bekräftad! </h1>
+    <h2> Här är din order </h2>
+
 <div class="menu-content">
 
     <!--
     Elixir function that loops thru all
     the pizzas and prints it out as items.
     -->
-    <%= for item <- pizzas do %>
 
-        <!-- Each pizzas "item block" -->
-        <div class="menu-pizza-block">
-            <div>
-                <img class="menu-pizza-img" src="<%= item.img_path %>">
-            </div>
+    <%= for pizza <- pizzas do %>
+        <%= for order <- orders do %>
+            <%= if order.pizza_name == pizza.name do %>
+                <%= if order.customer == customer do %>
+                    <!-- Each pizzas "item block" -->
+                    <div class="menu-pizza-block">
+                        <div>
+                            <img class="menu-pizza-img" src="<%= pizza.img_path %>">
+                        </div>
 
-            <!-- The pizza description of the block -->
-            <div class="menu-pizza-desc">
+                        <!-- The pizza description of the block -->
+                        <div class="menu-pizza-desc">
 
-                <!-- The pizza title of the block -->
-                <h3 class="menu-pizza-name">
-                    <%= item.name %>
-                </h3>
+                            <!-- The pizza title of the block -->
+                            <h3 class="menu-pizza-name">
+                                <%= order.pizza_name %>
+                            </h3>
 
-                <!-- The pizza ingridients of the block -->
-                <div class="menu-pizza-ingridients">
-                    <%= for ingredient <- item.containing_ingredients do %>
-                        <p class="menu-pizza-ingridient"><%= ingredient %></p>
-                    <% end %>
-                </div>
+                            <!-- The pizza ingredients of the block -->
+                            <div class="menu-pizza-ingredients">
+                                <%= for ingredient <- pizza.containing_ingredients do %>
+                                    <p class="menu-pizza-ingredient"><%= ingredient %></p>
+                                <% end %>
+                                <%= if order.removed_ingredients != "" do %>
+                                    <%= for ingredient <- order.removed_ingredients do %>
+                                        <p class="menu-pizza-ingredient">-<%= ingredient %></p>
+                                    <% end %>
+                                <% end %>
+                                <%= if order.added_ingredients != "" do %>
+                                    <%= for ingredient <- order.added_ingredients do %>
+                                        <p class="menu-pizza-ingredient">+<%= ingredient %></p>
+                                    <% end %>
+                                <% end %>
+                                <%= if order.size == true do %>
+                                    <p class="menu-pizza-ingredient">Storlek: Familjepizza</p>
+                                <% else %>
+                                    <p class="menu-pizza-ingredient">Storlek: Normal pizza</p>
+                                <% end %>
+                                <%= if order.gluten == true do %>
 
-
-            </div>
-
-        </div>
-
+                                <% else %>
+                                    <p class="menu-pizza-ingredient">Glutenfri</p>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
     <% end %>
+
 
     <!-- <script>
       function addToLocalStorage(button) {

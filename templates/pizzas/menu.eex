@@ -4,6 +4,7 @@
     Elixir function that loops thru all
     the pizzas and prints it out as items.
     -->
+
     <%= for item <- pizzas do %>
 
         <!-- Each pizzas "item block" -->

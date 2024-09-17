@@ -6,6 +6,7 @@ defmodule Pluggy.Router do
   alias Pluggy.UserController
   alias Pluggy.AdminController
   alias Pluggy.CartController
+  alias Pluggy.OrderController
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
@@ -41,10 +42,10 @@ defmodule Pluggy.Router do
   get("/checkout", do: PizzaController.checkout(conn))
 
   # Confirm order page
-  post("/checkout/done", do: CartController.submit_order(conn, conn.body_params))
+  post("/checkout/done", do: OrderController.submit_order(conn, conn.body_params))
 
   # Remove item from cart
-  post("/checkout/remove", do: CartController.remove(conn, conn.body_params))
+  post("/checkout/remove", do: OrderController.remove(conn, conn.body_params))
 
   # Admin page
   get("/admin", do: AdminController.admin(conn))
